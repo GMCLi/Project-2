@@ -1,26 +1,26 @@
-var db = require("../models");
+var customer = require("../models/example.js");
 
 module.exports = function(app) {
   // Get all examples
   app.get("/api/customer", function(req, res) {
-    db.customer.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+    customer.findAll({}).then(function(customerData) {
+      res.json(customerData);
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/customer", function(req, res) {
+    customer.create(req.body).then(function(customerData) {
+      res.json(customerData);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
+  app.delete("/api/customer/:id", function(req, res) {
+    customer
+      .destroy({ where: { id: req.params.id } })
+      .then(function(customerData) {
+        res.json(customerData);
+      });
   });
 };
