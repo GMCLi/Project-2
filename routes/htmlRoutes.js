@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.customer.findAll({}).then(function(customerData) {
       res.render("index", {
-        msg: "Welcome!",
+        msg: "function findAll - All Customers",
         examples: customerData
       });
     });
@@ -16,7 +16,7 @@ module.exports = function(app) {
     db.customer
       .findOne({ where: { id: req.params.id } })
       .then(function(customerData) {
-        res.render("customer", {
+        res.render("example", {
           examples: customerData
         });
       });
