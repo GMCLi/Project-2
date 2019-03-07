@@ -9,10 +9,13 @@ module.exports = function(app) {
   });
 
   // Create a new example
-  app.post("/api/customer", function(req, res) {
-    customer.create(req.body).then(function(customerData) {
-      res.json(customerData);
-    });
+  app.post("/api/newCustomer", function(req, res) {
+    console.log(req.body);
+    customer
+      .create({ customerName: req.body.customerName })
+      .then(function(customerData) {
+        res.json(customerData);
+      });
   });
 
   // Delete an example by id
