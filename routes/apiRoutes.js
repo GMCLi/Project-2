@@ -1,6 +1,5 @@
 var db = require("../models");
-var customer = require("../models");
-// console.log("check" + customer);
+
 module.exports = function(app) {
   // Get all examples
   app.get("/api/customer", function(req, res) {
@@ -17,12 +16,13 @@ module.exports = function(app) {
       .create({ customerName: req.body.customerName })
       .then(function(customerData) {
         res.json(customerData);
+        // res.redirect("/");
       });
   });
 
   // Delete an example by id
   app.delete("/api/customer/:id", function(req, res) {
-    customer
+    db.customer
       .destroy({ where: { id: req.params.id } })
       .then(function(customerData) {
         res.json(customerData);

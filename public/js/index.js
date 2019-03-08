@@ -13,8 +13,11 @@ var API = {
       type: "POST",
       url: "api/customer",
       data: JSON.stringify(customerData)
+    }).then(function() {
+      location.reload();
     });
   },
+
   getExamples: function() {
     return $.ajax({
       url: "api/customer",
@@ -25,6 +28,8 @@ var API = {
     return $.ajax({
       url: "api/customer/" + id,
       type: "DELETE"
+    }).then(function() {
+      location.reload();
     });
   }
 };
@@ -74,6 +79,7 @@ var handleFormSubmit = function(event) {
 
   API.saveCustomer(customer).then(function() {
     refreshExamples();
+    Location.reload();
   });
 
   $customerName.val("");
