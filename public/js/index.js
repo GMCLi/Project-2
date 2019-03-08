@@ -5,14 +5,14 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveCustomer: function(example) {
+  saveCustomer: function(customerData) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
       url: "api/customer",
-      data: JSON.stringify(example)
+      data: JSON.stringify(customerData)
     });
   },
   getExamples: function() {
