@@ -8,6 +8,13 @@ module.exports = function(app) {
     });
   });
 
+  // Get all cars
+  app.get("/api/cars", function(req, res) {
+    db.Car.findAll({}).then(function(dbCars) {
+      res.json(dbCars);
+    });
+  });
+
   // Create a new example
   app.post("/api/newCustomer", function(req, res) {
     console.log(req.body);
@@ -18,6 +25,14 @@ module.exports = function(app) {
       });
   });
 
+  // Create a new car
+  app.post("/api/newCar", function(req, res) {
+    console.log(req.body);
+    Car.create({ carModel: req.body.carModel }).then(function(carData) {
+      res.json(carData);
+    });
+  });
+
   // Delete an example by id
   app.delete("/api/customer/:id", function(req, res) {
     customer
@@ -25,5 +40,12 @@ module.exports = function(app) {
       .then(function(customerData) {
         res.json(customerData);
       });
+  });
+
+  // Delete a car by id
+  app.delete("/api/cars/:id", function(req, res) {
+    db.Car.destroy({ where: { id: req.params.id } }).then(function(dbCar) {
+      res.json(dbCar);
+    });
   });
 };

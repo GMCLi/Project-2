@@ -11,6 +11,16 @@ module.exports = function(app) {
     });
   });
 
+  // Load cars page
+  app.get("/cars", function(req, res) {
+    db.Car.findAll({}).then(function(dbCars) {
+      res.render("cars", {
+        msg: "Welcome!",
+        cars: dbCars
+      });
+    });
+  });
+
   // Load customer page and pass in an customer by id
   app.get("/customer/:id", function(req, res) {
     db.customer
