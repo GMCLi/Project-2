@@ -85,7 +85,7 @@ var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
-
+  console.log(idToDelete);
   API.deleteExample(idToDelete).then(function() {
     refreshExamples();
   });

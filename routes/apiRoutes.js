@@ -5,6 +5,7 @@ module.exports = function(app) {
   app.get("/api/customer", function(req, res) {
     customer.findAll({}).then(function(customerData) {
       res.json(customerData);
+      console.log(customerName);
     });
   });
 
