@@ -16,7 +16,7 @@ module.exports = function(app) {
     db.customer
       .findOne({ where: { id: req.params.id } })
       .then(function(customerData) {
-        res.render("example", {
+        res.render("Customer", {
           examples: customerData
         });
       });
