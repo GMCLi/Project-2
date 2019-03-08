@@ -1,6 +1,5 @@
 var db = require("../models");
-// var customer = require("../models");
-// console.log("check" + customer);
+
 module.exports = function(app) {
   // Get all examples
   app.get("/api/customer", function(req, res) {
@@ -17,6 +16,7 @@ module.exports = function(app) {
       .create({ customerName: req.body.customerName })
       .then(function(customerData) {
         res.json(customerData);
+        // res.redirect("/");
       });
   });
 
