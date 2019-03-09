@@ -12,15 +12,15 @@ module.exports = function(app) {
     });
   });
 
-    // Load cars page - Paskwa's changes
-    app.get("/cars", function(req, res) {
-      db.Car.findAll({}).then(function(dbCars) {
-        res.render("cars", {
-          msg: "Welcome!",
-          cars: dbCars
-        });
+  // Load cars page - Paskwa's changes
+  app.get("/cars", function(req, res) {
+    db.Car.findAll({}).then(function(dbCars) {
+      res.render("cars", {
+        msg: "Welcome!",
+        cars: dbCars
       });
     });
+  });
 
   // Load customer page and pass in an customer by id
   app.get("/customer/:id", function(req, res) {
@@ -36,25 +36,26 @@ module.exports = function(app) {
   });
 
   // Load customer edit page
-  app.put("/customer/:id/customerupdate", function(req, res) {
+  app.get("/customer/:id/customerupdate", function(req, res) {
     db.customer
-      .update({ where: { id: req.params.id } })
+      .findAll({ where: { id: req.params.id } })
       .then(function(customerData) {
+        // console.log(customerData[0].dataValues);
         res.render("customerupdate", {
-          customerID: customerData.dataValues.id,
-          customerName: customerData.dataValues.customerName
+          customerID: customerData[0].dataValues.id,
+          customerName: customerData[0].dataValues.customerName
         });
       });
   });
 
-    // Load car page and pass in a car by id - Paskwa's changes
-    app.get("/car/:id", function(req, res) {
-      db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
-        res.render("carpage", {
-          car: dbCar
-        });
+  // Load car page and pass in a car by id - Paskwa's changes
+  app.get("/car/:id", function(req, res) {
+    db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
+      res.render("carpage", {
+        car: dbCar
       });
     });
+  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

@@ -44,7 +44,7 @@ module.exports = function(app) {
   });
 
   // PUT route for updating customer info by id
-  app.put("/api/posts/:id", function(req, res) {
+  app.put("/api/customer/:id", function(req, res) {
     db.customer
       .update(req.body, {
         where: {
