@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Car = sequelize.define("Car", {
-    licenceplate: DataTypes.STRING,
+    platenumber: DataTypes.STRING,
     make: DataTypes.STRING,
     model: DataTypes.STRING,
     color: DataTypes.STRING,
