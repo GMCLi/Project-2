@@ -5,9 +5,11 @@
         <div class="card" style="width: 100%;">
           <img src={{car.image}} class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{car.model}}e</h5>
-            <p class="card-text">{{car.year}}.{{car.make}}</p>
-            <a href="#" class="btn btn-primary">Manage this car</a>
+            <h5 class="card-title"><strong>Plate Number: </strong>{{car.platenumber}}</h5>
+            <p class="card-text"><strong>Year:</strong>{{car.year}}</p>
+            <p class="card-text"><strong>Model:</strong>{{car.make}}</p>
+            <p class="card-text"><strong>Make: </strong>{{car.make}}</p>
+            <button id="updatecar" class="btn btn-primary">Manage this car</button>
           </div>
         </div>
         <a href="/cars">← Back To Cars</a>

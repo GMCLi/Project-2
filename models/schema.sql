@@ -6,4 +6,4 @@ DROP TABLE IF EXISTS customers;
 USE rental_db;
 -- SELECT * FROM cars;
 
--- DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS cars;
