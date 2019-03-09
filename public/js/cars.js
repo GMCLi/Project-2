@@ -8,7 +8,7 @@ $(document).ready(function() {
   var $carImage = $("#car-image");
   var $isClean = $("#car-clean");
   var $isAvailable = $("#is-available");
-  var $fixCar = $("fix-car");
+  var $fixCar = $("#fix-car");
   var $tankEmpty = $("#tank-empty");
   var $submitBtn = $("#submitcar");
   //var $submitUpdate = $("#updatecar");
