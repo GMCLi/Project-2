@@ -28,4 +28,17 @@ module.exports = function(app) {
         res.json(customerData);
       });
   });
+
+  // PUT route for updating customer info by id
+  app.put("/api/posts/:id", function(req, res) {
+    db.customer
+      .update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(customerData) {
+        res.json(customerData);
+      });
+  });
 };

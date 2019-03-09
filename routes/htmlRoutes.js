@@ -18,7 +18,19 @@ module.exports = function(app) {
       .findOne({ where: { id: req.params.id } })
       .then(function(customerData) {
         // console.log(customerData);
-        res.render("example", {
+        res.render("customer", {
+          customerID: customerData.dataValues.id,
+          customerName: customerData.dataValues.customerName
+        });
+      });
+  });
+
+  // Load customer edit page
+  app.put("/customer/:id/customerupdate", function(req, res) {
+    db.customer
+      .update({ where: { id: req.params.id } })
+      .then(function(customerData) {
+        res.render("customerupdate", {
           customerID: customerData.dataValues.id,
           customerName: customerData.dataValues.customerName
         });

@@ -1,3 +1,32 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+
+      <button type="button" id="customerdatabaseNav" class="btn btn-primary"
+        onclick="location.href = 'http://localhost:3000/';">
+        Customer Database
+      </button>
+
+      <button type="button" id="cardatabaseNav" class="btn btn-primary"
+        onclick="location.href = 'http://locahost:3000/car';">
+        Vehicle Database
+      </button>
+
+    </div>
+  </div>
+  <form class="form-inline">
+
+    <input class="form-control mr-sm-2 flexdatalist key-word" id="search-bar" type="search" placeholder="Search"
+      aria-label="Search" list='currency' name="currnecy">
+    <button type="button" class="btn btn-outline-success my-2 my-sm-0 search-bar" id="search-btn">Search</button>
+  </form>
+</nav>
+
 <div id="home">
   <div class="container">
     <div class="row">
@@ -20,7 +49,8 @@
           {{#each customer}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="customer/{{this.dataValues.id}}">{{this.dataValues.customerName}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button> 
+            <button class="btn btn-warning float-right update" onclick="location.href = 'http://localhost:3000/customer/{{this.dataValues.id}}/customerupdate';">Update</button> 
+            <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button> 
           </li>
           {{/each}}
         </ul>

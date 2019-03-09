@@ -100,3 +100,10 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+// $customerDataNav.on("click", function() {
+//   location.href = "localhost:3000/";
+// });
+
+// document.getElementById("customerdataNav").onclick = function() {
+//   location.href = "localhost:3000/";
+// };

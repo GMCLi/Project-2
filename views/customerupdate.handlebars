@@ -1,0 +1,50 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+
+            <button type="button" id="customerdatabaseNav" class="btn btn-primary"
+                onclick="location.href = 'http://localhost:3000/';">
+                Customer Database
+            </button>
+
+            <button type="button" id="cardatabaseNav" class="btn btn-primary"
+                onclick="location.href = 'http://locahost:3000/car';">
+                Vehicle Database
+            </button>
+
+        </div>
+    </div>
+    <form class="form-inline">
+
+        <input class="form-control mr-sm-2 flexdatalist key-word" id="search-bar" type="search" placeholder="Search"
+            aria-label="Search" list='currency' name="currnecy">
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0 search-bar" id="search-btn">Search</button>
+    </form>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>{{msg}}</h1>
+
+            <form class="clearfix mb-4" action="POST">
+                <div class="form-group">
+                    <label for="customer-name">Customer Name</label>
+                    <input type="text" id="customer-name" class="form-control" aria-describedby="customer-name"
+                        placeholder="Enter Customer Name">
+                </div>
+                {{!-- <div class="form-group">
+            <label for="example-description">Example Description</label>
+            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+          </div> --}}
+                <button id="submit" class="btn btn-primary float-right">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
