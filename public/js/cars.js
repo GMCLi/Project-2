@@ -1,15 +1,17 @@
 $(document).ready(function() {
   // Get references to page elements
+  var $plateNumber = $("#plate-number");
   var $carMake = $("#car-make");
   var $carModel = $("#car-model");
   var $carColor = $("#car-color");
   var $carYear = $("#car-year");
   var $carImage = $("#car-image");
-  /*var $isClean = $("#car-clean");
+  var $isClean = $("#car-clean");
   var $isAvailable = $("#is-available");
   var $fixCar = $("fix-car");
-  var $tankEmpty = $("#tank-empty");*/
+  var $tankEmpty = $("#tank-empty");
   var $submitBtn = $("#submitcar");
+  //var $submitUpdate = $("#updatecar");
   var $carList = $("#car-list");
 
   // The API object contains methods for each kind of request we'll make
@@ -69,54 +71,23 @@ $(document).ready(function() {
 
   refreshCars();
 
-  // refreshcarCards gets new cars from the db and repopulates the list
-  var refreshcarCards = function() {
-    API.getCars().then(function(data) {
-      var $cars = data.map(function(car) {
-        // var $img = $("<img>").attr("src", car.image);
-
-        var $a = $("<a>")
-          .text(car.make)
-          .attr("href", "/car/" + car.id);
-
-        var $li = $("<li>")
-          .attr({
-            class: "list-group-item",
-            "data-id": car.id
-          })
-          .append($a);
-
-        var $button = $("<button>")
-          .addClass("btn btn-danger float-right delete")
-          .text("ｘ");
-
-        $li.append($button);
-
-        return $li;
-      });
-
-      $carList.empty();
-      $carList.append($cars);
-    });
-  };
-
-  refreshcarCards();
-
   // handleFormSubmit is called whenever we submit a new example
   // Save the new example to the db and refresh the list
   var handleFormSubmit = function(event) {
     event.preventDefault();
+    alert("You want to add this car?");
 
     var car = {
+      platenumber: $plateNumber.val().trim(),
       make: $carMake.val().trim(),
       model: $carModel.val().trim(),
       color: $carColor.val().trim(),
       year: $carYear.val().trim(),
-      image: $carImage.val().trim()
-      /* isclean: $isClean.prop("checked", false),
-      isavailable: $isAvailable.prop("checked", false),
-      fix: $fixCar.prop("checked", false),
-      tankempty: $tankEmpty.prop("checked", false)*/
+      image: $carImage.val().trim(),
+      isclean: $isClean.val(),
+      isavailable: $isAvailable.val(),
+      fix: $fixCar.val(),
+      tankempty: $tankEmpty.val()
     };
 
     if (!(car.make && car.model)) {
@@ -130,15 +101,16 @@ $(document).ready(function() {
       refreshCars();
     });
 
+    $plateNumber.val("");
     $carMake.val("");
     $carModel.val("");
     $carColor.val("");
     $carYear.val("");
     $carImage.val("");
-    /*$isClean.val("");
-    $isAvailable.val("");
-    $fixCar.val("");
-    $tankEmpty.val("");*/
+    $isClean.prop("checked", false);
+    $isAvailable.prop("checked", false);
+    $fixCar.prop("checked", false);
+    $tankEmpty.prop("checked", false);
   };
 
   // handleDeleteBtnClick is called when an example's delete button is clicked
