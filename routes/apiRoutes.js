@@ -8,6 +8,13 @@ module.exports = function(app) {
     });
   });
 
+  // Get all cars - Paskwa's changes
+  app.get("/api/cars", function(req, res) {
+    db.Car.findAll({}).then(function(dbCars) {
+      res.json(dbCars);
+    });
+  });  
+
   // Create a new example
   app.post("/api/Customer", function(req, res) {
     console.log(req.body); //console logs: { customerName: 'blah' }
@@ -20,6 +27,13 @@ module.exports = function(app) {
       });
   });
 
+  // Create a new car - Paskwa's changes
+  app.post("/api/cars", function(req, res) {
+    db.Car.create(req.body).then(function(dbCar) {
+      res.json(dbCar);
+    });
+  });  
+
   // Delete an example by id
   app.delete("/api/customer/:id", function(req, res) {
     db.customer
@@ -29,7 +43,8 @@ module.exports = function(app) {
       });
   });
 
-  // PUT route for updating customer info by id
+
+// PUT route for updating customer info by id
   app.put("/api/posts/:id", function(req, res) {
     db.customer
       .update(req.body, {
@@ -41,4 +56,10 @@ module.exports = function(app) {
         res.json(customerData);
       });
   });
+  // Delete a car by id - Paskwa's changes
+  app.delete("/api/cars/:id", function(req, res) {
+    db.Car.destroy({ where: { id: req.params.id } }).then(function(dbCar) {
+      res.json(dbCar);
+    });
+  });  
 };
