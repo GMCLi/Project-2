@@ -36,13 +36,14 @@ module.exports = function(app) {
   });
 
   // Load customer edit page
-  app.put("/customer/:id/customerupdate", function(req, res) {
+  app.get("/customer/:id/customerupdate", function(req, res) {
     db.customer
-      .update({ where: { id: req.params.id } })
+      .findAll({ where: { id: req.params.id } })
       .then(function(customerData) {
+        // console.log(customerData[0].dataValues);
         res.render("customerupdate", {
-          customerID: customerData.dataValues.id,
-          customerName: customerData.dataValues.customerName
+          customerID: customerData[0].dataValues.id,
+          customerName: customerData[0].dataValues.customerName
         });
       });
   });
