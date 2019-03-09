@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.customer.findAll({}).then(function(customerData) {
       // console.log(customerData.dataValues);
-      res.render("index", {
+      res.render("customerdatabase", {
         msg: "Customer Database",
         customer: customerData
       });

@@ -45,12 +45,16 @@ module.exports = function(app) {
 
   // PUT route for updating customer info by id
   app.put("/api/customer/:id", function(req, res) {
+    console.log(req);
     db.customer
-      .update(req.body, {
-        where: {
-          id: req.params.id
+      .update(
+        { customerName: req.body.name },
+        {
+          where: {
+            id: req.params.id
+          }
         }
-      })
+      )
       .then(function(customerData) {
         res.json(customerData);
       });
