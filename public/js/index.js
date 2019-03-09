@@ -1,6 +1,7 @@
 // Get references to page elements
 var $customerName = $("#customer-name");
 var $submitBtn = $("#submit");
+var $updateBtn = $(".update");
 var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
@@ -85,6 +86,15 @@ var handleFormSubmit = function(event) {
   $customerName.val("");
 };
 
+//handleCustomerEdit is called when the update button is pressed
+var handleCustomerEdit = function() {
+  var currentCustomer = $(this)
+    .parent()
+    .parent()
+    .data("customer");
+  window.location.href = "/customer/" + currentCustomer.id + "/customerupdate";
+};
+
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
@@ -100,10 +110,4 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-// $customerDataNav.on("click", function() {
-//   location.href = "localhost:3000/";
-// });
-
-// document.getElementById("customerdataNav").onclick = function() {
-//   location.href = "localhost:3000/";
-// };
+$updateBtn.on("click", handleCustomerEdit);
