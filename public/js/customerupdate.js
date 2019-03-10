@@ -1,32 +1,25 @@
 $(document).ready(function() {
   var $updateBtn = $("#updatesubmit");
-  var $customerNameUpdate = $("#customer-nameUpdate");
   //handleCustomerEdit is called when the update button is pressed
-  var handleCustomerEdit = function (event) {
+  var handleCustomerEdit = function(event) {
     event.preventDefault();
     console.log("anything");
 
-    var $inputs = $('.updateForm :input');
-    console.log($inputs);
-    var $preID = $('.updateForm :label');
-    console.log($preID);
+    var $inputs = $(".updateForm");
 
-    var values = {};
-    console.log(values);
-    // $inputs.each(function() {
-    //     values[this.name] = $(this).val();
+    var customer = {
+      id: $inputs[0][0].dataset.id,
+      name: $inputs[0][1].value
+    };
+
+    $.ajax({
+      method: "PUT",
+      url: "/api/customer/" + customer.id,
+      data: customer.name
+    });
+    // .then(function() {
+    //   location.reload();
     // });
+    $updateBtn.on("click", handleCustomerEdit);
   };
-
-  // var currentCustomer = $(this).parent().serializeArray();
-  // console.log(currentCustomer);
-
-  // $.ajax({
-  //   method: "PUT",
-  //   url: "/api/customer/" + ,
-  //   data: $customerNameUpdate
-  // }).then(function() {
-  //   location.reload();
-  // });
-  $updateBtn.on("click", handleCustomerEdit);
 });
