@@ -1,6 +1,7 @@
 .list-group-item {
   line-height: 2.5;
 }
+
  #home-page {
    height: 100%;
    background-image: url(car.jpg);
@@ -18,3 +19,9 @@
  #sign-in {
    float: right;
  }
+
+
+.carthumb {
+  width:100px;
+  height:100px;
+}

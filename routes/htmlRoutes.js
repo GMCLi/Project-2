@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.customer.findAll({}).then(function(customerData) {
       // console.log(customerData.dataValues);
-      res.render("index", {
+      res.render("customerdatabase", {
         msg: "Customer Database",
         customer: customerData
       });
@@ -40,13 +40,14 @@ module.exports = function(app) {
   });
 
   // Load customer edit page
-  app.put("/customer/:id/customerupdate", function(req, res) {
+  app.get("/customer/:id/customerupdate", function(req, res) {
     db.customer
-      .update({ where: { id: req.params.id } })
+      .findAll({ where: { id: req.params.id } })
       .then(function(customerData) {
+        // console.log(customerData[0].dataValues);
         res.render("customerupdate", {
-          customerID: customerData.dataValues.id,
-          customerName: customerData.dataValues.customerName
+          customerID: customerData[0].dataValues.id,
+          customerName: customerData[0].dataValues.customerName
         });
       });
   });
@@ -56,6 +57,19 @@ module.exports = function(app) {
     db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
       res.render("carpage", {
         car: dbCar
+<<<<<<< HEAD
+=======
+      });
+    });
+  });
+
+    // Load car page and pass in a car by id - Paskwa's changes
+    app.get("/car/:id/update", function(req, res) {
+      db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
+        res.render("updatecar", {
+          car: dbCar
+        });
+>>>>>>> 12b36c88d6405d25515907e432cf1efce148f966
       });
     });
   });

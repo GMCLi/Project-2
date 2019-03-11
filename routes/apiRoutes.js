@@ -31,6 +31,7 @@ module.exports = function(app) {
   app.post("/api/cars", function(req, res) {
     db.Car.create(req.body).then(function(dbCar) {
       res.json(dbCar);
+      console.log("testing api routes");
     });
   });
 
@@ -44,17 +45,22 @@ module.exports = function(app) {
   });
 
   // PUT route for updating customer info by id
-  app.put("/api/posts/:id", function(req, res) {
+  app.put("/api/customer/:id", function(req, res) {
+    console.log(req);
     db.customer
-      .update(req.body, {
-        where: {
-          id: req.params.id
+      .update(
+        { customerName: req.body.name },
+        {
+          where: {
+            id: req.params.id
+          }
         }
-      })
+      )
       .then(function(customerData) {
         res.json(customerData);
       });
   });
+
   // Delete a car by id - Paskwa's changes
   app.delete("/api/cars/:id", function(req, res) {
     db.Car.destroy({ where: { id: req.params.id } }).then(function(dbCar) {
