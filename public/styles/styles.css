@@ -2,9 +2,19 @@
   line-height: 2.5;
 }
  #home-page {
-   background-color: blue;
    height: 100%;
+   background-image: url(car.jpg);
+   background-repeat: no-repeat, repeat;
+   background-size: 100%;
+   
  }
  body, html {
    height: 100%;
+ }
+ .auth {
+   margin: auto;
+   width: 30%;
+ }
+ #sign-in {
+   float: right;
  }
