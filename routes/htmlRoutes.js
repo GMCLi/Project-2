@@ -16,6 +16,10 @@ module.exports = function(app) {
     res.render("homepage");
   });
 
+  app.get("/createaccount", function(req, res) {
+    res.render("createaccount");
+  });
+
   // Load cars page - Paskwa's changes
   app.get("/cars", function(req, res) {
     db.Car.findAll({}).then(function(dbCars) {
@@ -57,19 +61,6 @@ module.exports = function(app) {
     db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
       res.render("carpage", {
         car: dbCar
-<<<<<<< HEAD
-=======
-      });
-    });
-  });
-
-    // Load car page and pass in a car by id - Paskwa's changes
-    app.get("/car/:id/update", function(req, res) {
-      db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
-        res.render("updatecar", {
-          car: dbCar
-        });
->>>>>>> 12b36c88d6405d25515907e432cf1efce148f966
       });
     });
   });
