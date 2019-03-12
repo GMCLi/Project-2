@@ -11,8 +11,9 @@ $(document).ready(function() {
   var $fixCar = $("#fix-car");
   var $tankEmpty = $("#tank-empty");
   var $submitBtn = $("#submitcar");
-  //var $submitUpdate = $("#updatecar");
   var $carList = $("#car-list");
+  var $updateCar = $("#update-car");
+  // var $submitUpdate = $("#submit-update");
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -22,42 +23,69 @@ $(document).ready(function() {
           "Content-Type": "application/json"
         },
         type: "POST",
-        url: "api/cars",
+        url: "api/car",
         data: JSON.stringify(car)
       });
     },
     getCars: function() {
       return $.ajax({
-        url: "api/cars",
+        url: "api/car",
         type: "GET"
       });
     },
     deleteCar: function(id) {
       return $.ajax({
-        url: "api/cars/" + id,
+        url: "api/car/" + id,
         type: "DELETE"
+      });
+    },
+    updateCar: function(car) {
+      return $.ajax({
+        headers: {
+          "Content-Type": "application/json"
+        },
+        type: "PUT",
+        url: "api/cars/" + id,
+        data: JSON.stringify(car)
       });
     }
   };
 
-  // refreshCars gets new cars from the db and repopulates the list
+  //refreshCars gets new cars from the db and repopulates the list
   var refreshCars = function() {
     API.getCars().then(function(data) {
       var $cars = data.map(function(car) {
+        var $img = $("<img>").attr("src", car.image);
+
+        $img.addClass("car-thumb");
+
         var $a = $("<a>")
-          .text(car.make)
+          .text(car.platenumber)
           .attr("href", "/car/" + car.id);
+
+        $a.addClass("mt-0 mb-1 media-body");
 
         var $li = $("<li>")
           .attr({
-            class: "list-group-item",
+            class: "media my-4",
             "data-id": car.id
           })
-          .append($a);
+          .append($img);
+
+        $li.append($a);
+
+        var $br = $("<br>");
+        $li.append($br);
+
+        var $p = $("<p>")
+          .text(car.year + ", " + car.model)
+          .attr("class", "media-body");
+
+        $li.append($p);
 
         var $button = $("<button>")
-          .addClass("btn btn-danger float-right delete")
-          .text("ｘ");
+          .addClass("btn btn-danger float-right")
+          .text("Delete Car");
 
         $li.append($button);
 
@@ -71,8 +99,8 @@ $(document).ready(function() {
 
   refreshCars();
 
-  // handleFormSubmit is called whenever we submit a new example
-  // Save the new example to the db and refresh the list
+  // handleFormSubmit is called whenever we submit a new car
+  // Save the new car to the db and refresh the list
   var handleFormSubmit = function(event) {
     event.preventDefault();
     alert("You want to add this car?");
@@ -125,7 +153,42 @@ $(document).ready(function() {
     });
   };
 
+  // handlesubmitUpdate is called whenever we submit an update for an existing car
+  // Save the new car to the db and refresh the list
+  // var handlesubmitUpdate = function(event) {
+  //   event.preventDefault();
+  //   alert("You want to update this car?");
+
+  //   var carUpdate = {
+  //     platenumber: $plateNumber.val().trim(),
+  //     make: $carMake.val().trim(),
+  //     model: $carModel.val().trim(),
+  //     color: $carColor.val().trim(),
+  //     year: $carYear.val().trim(),
+  //     image: $carImage.val().trim(),
+  //     isclean: $isClean.val(),
+  //     isavailable: $isAvailable.val(),
+  //     fix: $fixCar.val(),
+  //     tankempty: $tankEmpty.val()
+  //   };
+
+  //   console.log(car);
+
+  //   var idToUpdate = $(this)
+  //     .parent()
+  //     .attr("data-id");
+
+  //   API.updateCar(idToUpdate).then(function() {
+  //     alert("car updated");
+  //   });
+  // };
+
   // Add event listeners to the submit and delete buttons
   $submitBtn.on("click", handleFormSubmit);
   $carList.on("click", ".delete", handleDeleteBtnClick);
+  $updateCar.click(function() {
+    alert("you want to manage this car?");
+    $("#show-update").removeClass("hide-manage-car");
+  });
+  // $submitUpdate.click("click", ".update", handlesubmitUpdate);
 }); //end of document ready

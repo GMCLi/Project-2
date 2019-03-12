@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-8 offset-2">
       <div class="card mt-4">
-        <div class="card" style="width: 100%;">
-          <img src={{car.image}} class="card-img-top" alt="...">
-          <div class="card-body">
+        <div id="car-card" class="card" style="width: 100%;">
+          <img src={{car.image}} class="card-img-top" alt={{car.image}}>
+          <div id="car-details" class="card-body">
             <h5 class="card-title"><strong>Plate Number: </strong>{{car.platenumber}}</h5>
             <p class="card-text"><strong>Year:</strong>{{car.year}}</p>
             <p class="card-text"><strong>Model:</strong>{{car.make}}</p>
             <p class="card-text"><strong>Make: </strong>{{car.make}}</p>
-            <a href= "/car/{{car.id}}/update" id="updatecar" class="btn btn-primary">Manage this car</a>
+            <button type="submit" id="update-car" class="btn btn-primary">Manage this car</button>
           </div>
         </div>
         <a href="/cars">← Back To Cars</a>
@@ -17,10 +17,10 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row hide-manage-car" id= "show-update">
   <div class="col-8 offset-2">
     <h2>Update Car</h2>
-        <form class="clearfix mb-4" action="POST">
+        <form class="clearfix mb-4" id="update-form">
           <div class="form-group">
             <label for="plate-number">Plate Number</label>
             <input value={{car.platenumber}} type="text" id="car-platenumber" class="form-control" aria-describedby="plate-number" placeholder="Plate Number">
@@ -61,8 +61,11 @@
             <input value = {{car.tankempty}} type="checkbox" class="form-check-input" id="tank-empty">
             <label class="form-check-label" for="tank-empty">Tank is empty</label>
           </div>
-          <button id="updatecar" class="btn btn-primary float-right">Submit</button>
+          <button id="submit-update" class="btn btn-primary float-right">Submit</button>
         </form>
   </div>
 </div>
 </div>
+
+<script src="/js/cars.js"></script>
+<script src="/js/cms.js"></script>

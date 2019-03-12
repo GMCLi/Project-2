@@ -49,7 +49,7 @@
           <div class="form-group">
             <input type="checkbox" class="form-check-input" id="fix-car" value="false">
             <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
-          </div>                    
+          </div>
           <div class="form-group">
             <input type="checkbox" class="form-check-input" id="tank-empty" value="false">
             <label class="form-check-label" for="tank-empty">Tank is empty</label>
@@ -59,12 +59,16 @@
         <h3 class="clearfix">Available Cars</h3>
         <ul id="car-list" class="list-group">
           {{#each cars}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="car/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
+          <li data-id={{this.id}} class="media my-4">
+            <img src={{this.image}} class="car-thumb">
+            <a class = "mt-0 mb-1 media-body" href="car/{{this.id}}">{{this.platenumber}}</a>
+            <br>
+            <p class= "media-body">{{this.year}}..{{this.model}}</p>
+            <button class="btn btn-warning float-right update" onclick="location.href = 'http://localhost:3000/customer/{{this.dataValues.id}}/car';">Update</button> 
+            <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button> 
             {{/each}}
         </ul>
-      </div>
+      </div> {{! end of div on line 4 }}
     </div>
   </div>
 </div>

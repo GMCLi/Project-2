@@ -2,7 +2,18 @@
   line-height: 2.5;
 }
 
-.carthumb {
+.car-thumb {
   width:100px;
   height:100px;
 }
+
+.delete {
+  position: relative;
+  bottom: 0;
+  right: 0;
+}
+
+.hide-manage-car {
+  visibility: hidden;
+}
+

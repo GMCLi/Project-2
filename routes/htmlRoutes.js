@@ -57,14 +57,14 @@ module.exports = function(app) {
     });
   });
 
-    // Load car page and pass in a car by id - Paskwa's changes
-    app.get("/car/:id/update", function(req, res) {
-      db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
-        res.render("updatecar", {
-          car: dbCar
-        });
+  // Load car page and pass in a car by id - Paskwa's changes
+  app.get("/car/:id/update", function(req, res) {
+    db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
+      res.render("updatecar", {
+        car: dbCar
       });
     });
+  });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
