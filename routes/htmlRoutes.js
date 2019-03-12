@@ -11,6 +11,14 @@ module.exports = function(app) {
       });
     });
   });
+  //Load the home page - Sasan
+  app.get("/homepage", function(req, res) {
+    res.render("homepage");
+  });
+
+  app.get("/createaccount", function(req, res) {
+    res.render("createaccount");
+  });
 
   // Load cars page - Paskwa's changes
   app.get("/cars", function(req, res) {
@@ -56,15 +64,6 @@ module.exports = function(app) {
       });
     });
   });
-
-    // Load car page and pass in a car by id - Paskwa's changes
-    app.get("/car/:id/update", function(req, res) {
-      db.Car.findOne({ where: { id: req.params.id } }).then(function(dbCar) {
-        res.render("updatecar", {
-          car: dbCar
-        });
-      });
-    });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
