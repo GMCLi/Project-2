@@ -3,7 +3,7 @@ $(document).ready(function() {
   //handleCustomerEdit is called when the update button is pressed
   var handleCustomerEdit = function(event) {
     event.preventDefault();
-    console.log("anything");
+    console.log("handleCustomerEdit Initiated");
 
     var $inputs = $(".updateForm");
 
@@ -11,15 +11,16 @@ $(document).ready(function() {
       id: $inputs[0][0].dataset.id,
       name: $inputs[0][1].value
     };
-
+    console.log(customer.name);
     $.ajax({
       method: "PUT",
       url: "/api/customer/" + customer.id,
-      data: customer.name
+      data: {
+        name: customer.name
+      }
+    }).then(function() {
+      location.reload();
     });
-    // .then(function() {
-    //   location.reload();
-    // });
-    $updateBtn.on("click", handleCustomerEdit);
   };
+  $updateBtn.on("click", handleCustomerEdit);
 });

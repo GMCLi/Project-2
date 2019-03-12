@@ -45,13 +45,13 @@ module.exports = function(app) {
 
   // PUT route for updating customer info by id
   app.put("/api/customer/:id", function(req, res) {
-    console.log(req);
+    console.log(req.body.name); //req.body = Echo: ''
     db.customer
       .update(
-        { customerName: req.body.name },
+        { customerName: req.body.name }, //issue: undefined. req.body = Echo: ''
         {
           where: {
-            id: req.params.id
+            id: req.params.id //confirmed operational
           }
         }
       )
