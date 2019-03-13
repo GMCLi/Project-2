@@ -1,25 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card" style="width: 100%;">
-          <img src={{car.image}} class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><strong>Plate Number: </strong>{{car.platenumber}}</h5>
-            <p class="card-text"><strong>Year:</strong>{{car.year}}</p>
-            <p class="card-text"><strong>Model:</strong>{{car.make}}</p>
-            <p class="card-text"><strong>Make: </strong>{{car.make}}</p>
-            <a href= "/car/{{car.id}}/update" id="updatecar" class="btn btn-primary">Manage this car</a>
-          </div>
-        </div>
-        <a href="/cars">← Back To Cars</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-8 offset-2">
-    <h2>Update Car</h2>
+<h2>Update Car</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="plate-number">Plate Number</label>
@@ -50,11 +29,11 @@
             <label class="form-check-label" for="car-clean">Car is clean</label>
           </div>
           <div class="form-group">
-            <input value={{car.isavailable}} type="checkbox" class="form-check-input" id="is-available">
+            <input value = {{car.isavailable}} type="checkbox" class="form-check-input" id="is-available">
             <label class="form-check-label" for="is-available">Car is available</label>
           </div>
           <div class="form-group">
-            <input value={{car.fix}} type="checkbox" class="form-check-input" id="fix-car">
+            <input value = {{car.fix}} type="checkbox" class="form-check-input" id="fix-car">
             <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
           </div>
           <div class="form-group">
@@ -63,6 +42,3 @@
           </div>
           <button id="updatecar" class="btn btn-primary float-right">Submit</button>
         </form>
-  </div>
-</div>
-</div>

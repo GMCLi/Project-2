@@ -11,6 +11,14 @@ module.exports = function(app) {
       });
     });
   });
+  //Load the home page - Sasan
+  app.get("/homepage", function(req, res) {
+    res.render("homepage");
+  });
+
+  app.get("/createaccount", function(req, res) {
+    res.render("createaccount");
+  });
 
   // Load cars page - Paskwa's changes
   app.get("/cars", function(req, res) {

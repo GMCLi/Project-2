@@ -6,6 +6,11 @@
         <h2>Manage your Classic Cars</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
+            <label for="plate-number">Plate Number</label>
+            <input type="text" id="plate-number" class="form-control" aria-describedby="plate-number"
+              placeholder="Plate Number">
+          </div>
+          <div class="form-group">
             <label for="car-make">Make</label>
             <input type="text" id="car-make" class="form-control" aria-describedby="car-make" placeholder="Make">
           </div>
@@ -25,45 +30,39 @@
             <label for="car-image">Image</label>
             <input class="form-control" id="car-image" aria-describedby="car-image" placeholder="image URL"></input>
           </div>
-          {{!<div class="form-group">
-            <input type="checkbox" class="form-check-input" id="car-clean">
-            <label class="form-check-label" for="car-clean">Car is clean</label>
-          </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="is-available">
+            <input type="checkbox" class="form-check-input" id="car-clean" value="false">
+            <label class="form-check-label active" for="car-clean">Car is clean</label>
+          </div>
+          {{!-- <div class="form-group">
+            <input type="checkbox" class="form-check-input" id="is-available" value="false">
+            <label class="form-check-label active" for="is-available">Car is available</label>
+          </div> --}}
+          {{!-- <div class="form-group">
+            <input type="checkbox" class="form-check-input" id="fix-car" value="false">
+            <label class="form-check-label active" for="fix-car">Car needs to be fixed</label>
+          </div> --}}
+          <div class="form-group">
+            <input type="checkbox" class="form-check-input" id="is-available" value="false">
             <label class="form-check-label" for="is-available">Car is available</label>
           </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="fix-car">
+            <input type="checkbox" class="form-check-input" id="fix-car" value="false">
             <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
-          </div>
+          </div>                    
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="tank-empty">
+            <input type="checkbox" class="form-check-input" id="tank-empty" value="false">
             <label class="form-check-label" for="tank-empty">Tank is empty</label>
-          </div> }}
+          </div>
           <button id="submitcar" class="btn btn-primary float-right">Submit</button>
         </form>
         <h3 class="clearfix">Available Cars</h3>
         <ul id="car-list" class="list-group">
           {{#each cars}}
-          {{!-- <li data-id="{{this.id}}" class="list-group-item">
+          <li data-id="{{this.id}}" class="list-group-item">
             <a href="car/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button> --}}
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src={{this.image}} class="card-img" alt={{this.make}}>
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">{{this.make}}</h5>
-                  <p class="card-text">{{this.year}}.{{this.model}}</p>
-                  <p class="card-text"><small class="text-muted">Place holder for information on availability, tank empty, needs fixing</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{/each}}
+            <button class="btn btn-danger float-right delete">ｘ</button>
+            {{/each}}
         </ul>
       </div>
     </div>
