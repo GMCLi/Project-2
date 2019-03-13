@@ -14,6 +14,13 @@ $(document).ready(function() {
   //var $submitUpdate = $("#updatecar");
   var $carList = $("#car-list");
 
+  //check if checkbox is checked
+  // $(".check-ifchecked").each(function(e) {
+  //   if ($(this).val() == 1) {
+  //     $(this).attr("checked", "checked");
+  //   }
+  // });
+
   // The API object contains methods for each kind of request we'll make
   var API = {
     saveCar: function(car) {
@@ -22,19 +29,19 @@ $(document).ready(function() {
           "Content-Type": "application/json"
         },
         type: "POST",
-        url: "api/cars",
+        url: "/api/cars",
         data: JSON.stringify(car)
       });
     },
     getCars: function() {
       return $.ajax({
-        url: "api/cars",
+        url: "/api/cars",
         type: "GET"
       });
     },
     deleteCar: function(id) {
       return $.ajax({
-        url: "api/cars/" + id,
+        url: "/api/cars/" + id,
         type: "DELETE"
       });
     }
@@ -69,7 +76,74 @@ $(document).ready(function() {
     });
   };
 
-  refreshCars();
+  //refreshCars();
+
+  // refreshCards gets new cars from the db and repopulates the list
+  var refreshCards = function() {
+    API.getCars().then(function(data) {
+      var $cars = data.map(function(car) {
+        //add div div class="col-lg-4 col-sm-6 car-card"
+
+        var $carCard = $("<div>").attr({
+          class: "col-lg-4 col-sm-6 car-card",
+          "data-id": car.id
+        });
+
+        //add div div class="card and append to $carCard
+
+        var $div = $("<div").addClass("card");
+        $carCard.append($div);
+
+        //add image and append to $div
+        var $img = $("<img>")
+          .attr("src", car.image)
+          .addClass("card-img-top");
+        $div.append($img);
+
+        //add card body div and append it to $div
+
+        var $cardDiv = $("<div");
+        $cardDiv.addClass("card-body text-left");
+        $div.append($cardDiv);
+
+        //add a href that points to car/id and append to $div
+        var $a = $("<a>")
+          .text(car.platenumber)
+          .attr("href", "/car/" + car.id);
+        $a.addClass("card-title");
+
+        $cardDiv.append($a);
+
+        //add card paragraph with make and model
+
+        var $p = $("<p>").attr({
+          class: "card-text",
+          text: car.make + " " + car.model
+        });
+
+        $cardDiv.append($p);
+
+        //Add edit and delete buttons
+        var $button = $("<button>")
+          .addClass("btn btn-danger float-right delete")
+          .text("Delete");
+
+        $cardDiv.append($button);
+        // $("#car-card").append($carCard);
+
+        return $carCard;
+
+        //       $li.append($button);
+
+        //       return $li;
+      });
+
+      $carList.empty();
+      $carList.append($cars);
+    });
+  };
+
+  //refreshCards();
 
   // handleFormSubmit is called whenever we submit a new example
   // Save the new example to the db and refresh the list
@@ -107,10 +181,10 @@ $(document).ready(function() {
     $carColor.val("");
     $carYear.val("");
     $carImage.val("");
-    $isClean.prop("checked", false);
-    $isAvailable.prop("checked", false);
-    $fixCar.prop("checked", false);
-    $tankEmpty.prop("checked", false);
+    $isClean.prop("checked", 0);
+    $isAvailable.prop("checked", 0);
+    $fixCar.prop("checked", 0);
+    $tankEmpty.prop("checked", 0);
   };
 
   // handleDeleteBtnClick is called when an example's delete button is clicked

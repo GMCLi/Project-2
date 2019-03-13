@@ -46,19 +46,19 @@
             <input value={{car.image}} class="form-control" id="car-image" aria-describedby="car-image" placeholder="image URL"></input>
           </div>
          <div class="form-group">
-            <input value={{car.isclean}} type="checkbox" class="form-check-input" id="car-clean">
+            <input value={{car.isclean}} type="checkbox" class="form-check-input check-ifchecked" id="car-clean" name="car-clean">
             <label class="form-check-label" for="car-clean">Car is clean</label>
           </div>
           <div class="form-group">
-            <input value={{car.isavailable}} type="checkbox" class="form-check-input" id="is-available">
+            <input value={{car.isavailable}} type="checkbox" class="form-check-input check-ifchecked" id="is-available" name="is-available">
             <label class="form-check-label" for="is-available">Car is available</label>
           </div>
           <div class="form-group">
-            <input value={{car.fix}} type="checkbox" class="form-check-input" id="fix-car">
+            <input value={{car.fix}} type="checkbox" class="form-check-input check-ifchecked" id="fix-car" name="fix-car">
             <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
           </div>
           <div class="form-group">
-            <input value = {{car.tankempty}} type="checkbox" class="form-check-input" id="tank-empty">
+            <input value = {{car.tankempty}} type="checkbox" class="form-check-input check-ifchecked" id="tank-empty" name="tank-empty">
             <label class="form-check-label" for="tank-empty">Tank is empty</label>
           </div>
           <button id="updatecar" class="btn btn-primary float-right">Submit</button>
@@ -66,3 +66,5 @@
   </div>
 </div>
 </div>
+
+<script src="/js/cars.js"></script>
