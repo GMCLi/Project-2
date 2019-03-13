@@ -1,7 +1,9 @@
 // Get references to page elements
 var $customerName = $("#customer-name");
 var $submitBtn = $("#submit");
-
+var $DOBsubmit = $("#customerDOB");
+// var $customerRenting = $("#customerRenting");
+var $customerNum = $("#customerNumUpdate");
 var $exampleList = $("#example-list");
 // var $customerNameUpdate = $("#customer-nameUpdate");
 
@@ -71,13 +73,18 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var customer = {
-    customerName: $customerName.val().trim()
+    customerName: $customerName.val().trim(),
+    customerDOB: $DOBsubmit.val(),
+    customerNum: $customerNum.val()
+    // customerRenting: $customerRenting.val()
   };
 
-  // if (!(example.text && example.description)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
+  if (
+    !(customer.customerName && customer.customerDOB && customer.customerNum)
+  ) {
+    alert("You must enter an example text and description!");
+    return;
+  }
 
   API.saveCustomer(customer).then(function() {
     refreshExamples();
@@ -85,6 +92,8 @@ var handleFormSubmit = function(event) {
   });
 
   $customerName.val("");
+  $customerDOB.val("");
+  $customerNum.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
