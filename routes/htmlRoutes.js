@@ -30,7 +30,9 @@ module.exports = function(app) {
         // console.log(customerData);
         res.render("customer", {
           customerID: customerData.dataValues.id,
-          customerName: customerData.dataValues.customerName
+          customerName: customerData.dataValues.customerName,
+          customerDOB: customerData.dataValues.customerDOB,
+          customerNum: customerData.dataValues.customerNum
         });
       });
   });
@@ -40,10 +42,12 @@ module.exports = function(app) {
     db.customer
       .findAll({ where: { id: req.params.id } })
       .then(function(customerData) {
-        // console.log(customerData[0].dataValues);
+        console.log(customerData[0].dataValues);
         res.render("customerupdate", {
           customerID: customerData[0].dataValues.id,
-          customerName: customerData[0].dataValues.customerName
+          customerName: customerData[0].dataValues.customerName,
+          customerDOB: customerData[0].dataValues.customerDOB,
+          customerNum: customerData[0].dataValues.customerNum
         });
       });
   });
