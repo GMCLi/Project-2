@@ -28,4 +28,10 @@
 .carthumb {
   width:100px;
   height:100px;
+
+}
+
+.car-card {
+  float:left;
+  margin-bottom: 10px;
 }
