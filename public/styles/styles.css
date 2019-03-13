@@ -2,26 +2,27 @@
   line-height: 2.5;
 }
 
- #home-page, #account-page {
-   height: 100%;
-   background-image: url(car.jpg);
-   background-repeat: no-repeat, repeat;
-   background-size: 100%;
-   
+  #home-page {
+
+   font-family: "Times New Roman", Times, serif;
+   color: white;
+ 
  }
-.first-container {
-  text-align: center;
+.jumbotron {
+  background-image: url(car.jpg);
+  padding: 25px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
- body, html {
+.first-container {
+  text-align: center;
+  
+}
+
+ body {
+   background-color: beige;
    height: 100%;
- }
- .auth {
-   margin: auto;
-   width: 30%;
- }
- #sign-in {
-   float: right;
  }
 
 
