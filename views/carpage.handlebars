@@ -22,8 +22,8 @@
     <h2>Update Car</h2>
         <form class="clearfix mb-4" id="update-form">
           <div class="form-group">
-            <label for="plate-number">Plate Number</label>
-            <input value={{car.platenumber}} type="text" id="car-platenumber" class="form-control" aria-describedby="plate-number" placeholder="Plate Number">
+            <label for="car-platenumber">Plate Number</label>
+            <input value={{car.platenumber}} type="text" id="car-platenumber" class="form-control" aria-describedby="car-platenumber" placeholder="Plate Number">
           </div>
           <div class="form-group">
             <label for="car-make">Make</label>
@@ -46,19 +46,19 @@
             <input value={{car.image}} class="form-control" id="car-image" aria-describedby="car-image" placeholder="image URL"></input>
           </div>
          <div class="form-group">
-            <input value={{car.isclean}} type="checkbox" class="form-check-input" id="car-clean">
-            <label class="form-check-label" for="car-clean">Car is clean</label>
+            <input value={{car.isclean}} type="checkbox" name="is-clean" class="form-check-input" id="is-clean">
+            <label class="form-check-label" for="is-clean">Car is clean</label>
           </div>
           <div class="form-group">
-            <input value={{car.isavailable}} type="checkbox" class="form-check-input" id="is-available">
+            <input value={{car.isavailable}} type="checkbox" name="is-available" class="form-check-input" id="is-available">
             <label class="form-check-label" for="is-available">Car is available</label>
           </div>
           <div class="form-group">
-            <input value={{car.fix}} type="checkbox" class="form-check-input" id="fix-car">
+            <input value={{car.fix}} type="checkbox" name="fix-car" class="form-check-input" id="fix-car">
             <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
           </div>
           <div class="form-group">
-            <input value = {{car.tankempty}} type="checkbox" class="form-check-input" id="tank-empty">
+            <input value = {{car.tankempty}} type="checkbox" name="tank-empty" class="form-check-input" id="tank-empty">
             <label class="form-check-label" for="tank-empty">Tank is empty</label>
           </div>
           <button id="submit-update" class="btn btn-primary float-right">Submit</button>
@@ -68,4 +68,4 @@
 </div>
 
 <script src="/js/cars.js"></script>
-<script src="/js/cms.js"></script>
+{{!-- <script src="/js/cms.js"></script> --}}

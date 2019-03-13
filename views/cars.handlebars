@@ -6,8 +6,8 @@
         <h2>Manage your Classic Cars</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="plate-number">Plate Number</label>
-            <input type="text" id="plate-number" class="form-control" aria-describedby="plate-number"
+            <label for="car-platenumber">Plate Number</label>
+            <input type="text" id="car-platenumber" class="form-control" aria-describedby="car-platenumber"
               placeholder="Plate Number">
           </div>
           <div class="form-group">
@@ -31,8 +31,8 @@
             <input class="form-control" id="car-image" aria-describedby="car-image" placeholder="image URL"></input>
           </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="car-clean" value="false">
-            <label class="form-check-label active" for="car-clean">Car is clean</label>
+            <input type="checkbox" name= "is-clean" class="form-check-input" id="is-clean" value="1">
+            <label class="form-check-label active" for="is-clean">Car is clean</label>
           </div>
           {{!-- <div class="form-group">
             <input type="checkbox" class="form-check-input" id="is-available" value="false">
@@ -43,15 +43,15 @@
             <label class="form-check-label active" for="fix-car">Car needs to be fixed</label>
           </div> --}}
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="is-available" value="false">
+            <input type="checkbox" name ="is-available" "class="form-check-input" id="is-available" value="1">
             <label class="form-check-label" for="is-available">Car is available</label>
           </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="fix-car" value="false">
+            <input type="checkbox" class="form-check-input" name="fix-car" id="fix-car" value="false">
             <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
           </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="tank-empty" value="false">
+            <input type="checkbox" class="form-check-input" name="tank-empty" id="tank-empty" value="false">
             <label class="form-check-label" for="tank-empty">Tank is empty</label>
           </div>
           <button id="submitcar" class="btn btn-primary float-right">Submit</button>

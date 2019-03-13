@@ -1,19 +1,19 @@
 $(document).ready(function() {
   // Get references to page elements
-  var $plateNumber = $("#plate-number");
+  var $plateNumber = $("#car-platenumber");
   var $carMake = $("#car-make");
   var $carModel = $("#car-model");
   var $carColor = $("#car-color");
   var $carYear = $("#car-year");
   var $carImage = $("#car-image");
-  var $isClean = $("#car-clean");
+  var $isClean = $("#is-clean");
   var $isAvailable = $("#is-available");
   var $fixCar = $("#fix-car");
   var $tankEmpty = $("#tank-empty");
   var $submitBtn = $("#submitcar");
   var $carList = $("#car-list");
   var $updateCar = $("#update-car");
-  // var $submitUpdate = $("#submit-update");
+  var $submitUpdate = $("#submit-update");
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -23,30 +23,30 @@ $(document).ready(function() {
           "Content-Type": "application/json"
         },
         type: "POST",
-        url: "api/car",
+        url: "api/cars",
         data: JSON.stringify(car)
       });
     },
     getCars: function() {
       return $.ajax({
-        url: "api/car",
+        url: "/api/cars",
         type: "GET"
       });
     },
     deleteCar: function(id) {
       return $.ajax({
-        url: "api/car/" + id,
+        url: "/api/cars/" + id,
         type: "DELETE"
       });
     },
-    updateCar: function(car) {
+    updateCar: function(carUpdate, id) {
       return $.ajax({
         headers: {
           "Content-Type": "application/json"
         },
         type: "PUT",
-        url: "api/cars/" + id,
-        data: JSON.stringify(car)
+        url: "/api/cars/" + id,
+        data: JSON.stringify(carUpdate)
       });
     }
   };
@@ -54,6 +54,7 @@ $(document).ready(function() {
   //refreshCars gets new cars from the db and repopulates the list
   var refreshCars = function() {
     API.getCars().then(function(data) {
+      console.log(data);
       var $cars = data.map(function(car) {
         var $img = $("<img>").attr("src", car.image);
 
@@ -155,33 +156,41 @@ $(document).ready(function() {
 
   // handlesubmitUpdate is called whenever we submit an update for an existing car
   // Save the new car to the db and refresh the list
-  // var handlesubmitUpdate = function(event) {
-  //   event.preventDefault();
-  //   alert("You want to update this car?");
+  var handlesubmitUpdate = function(event) {
+    event.preventDefault();
 
-  //   var carUpdate = {
-  //     platenumber: $plateNumber.val().trim(),
-  //     make: $carMake.val().trim(),
-  //     model: $carModel.val().trim(),
-  //     color: $carColor.val().trim(),
-  //     year: $carYear.val().trim(),
-  //     image: $carImage.val().trim(),
-  //     isclean: $isClean.val(),
-  //     isavailable: $isAvailable.val(),
-  //     fix: $fixCar.val(),
-  //     tankempty: $tankEmpty.val()
-  //   };
+    var idToUpdate = $(this)
+      .parent()
+      .attr("data-id");
 
-  //   console.log(car);
+    alert("You want to update this car?");
 
-  //   var idToUpdate = $(this)
-  //     .parent()
-  //     .attr("data-id");
+    var carUpdate = {
+      platenumber: $plateNumber.val(),
+      make: $carMake.val(),
+      model: $carModel.val(),
+      color: $carColor.val(),
+      year: $carYear.val(),
+      image: $carImage.val(),
+      isclean: $isClean.val(),
+      isavailable: $isAvailable.val(),
+      fix: $fixCar.val(),
+      tankempty: $tankEmpty.val()
+    };
 
-  //   API.updateCar(idToUpdate).then(function() {
-  //     alert("car updated");
-  //   });
-  // };
+    console.log(carUpdate);
+
+    API.updateCar(carUpdate, idToUpdate).then(function() {
+      alert("car updated");
+    });
+  };
+
+  //check if boolean values are checked
+  $(".preference").each(function(e) {
+    if ($(this).val() == 1) {
+      $(this).attr("checked", "checked");
+    }
+  });
 
   // Add event listeners to the submit and delete buttons
   $submitBtn.on("click", handleFormSubmit);
@@ -190,5 +199,5 @@ $(document).ready(function() {
     alert("you want to manage this car?");
     $("#show-update").removeClass("hide-manage-car");
   });
-  // $submitUpdate.click("click", ".update", handlesubmitUpdate);
+  $submitUpdate.click("click", handlesubmitUpdate);
 }); //end of document ready

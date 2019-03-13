@@ -61,6 +61,16 @@ module.exports = function(app) {
       });
   });
 
+  // PUT route for updating car info by id
+  app.put("/api/cars/:id", function(req, res) {
+    console.log(req);
+    db.Car.update({ Car: req.body }, { where: { id: req.params.id } }).then(
+      function(dbCar) {
+        res.json(dbCar);
+      }
+    );
+  });
+
   // Delete a car by id - Paskwa's changes
   app.delete("/api/cars/:id", function(req, res) {
     db.Car.destroy({ where: { id: req.params.id } }).then(function(dbCar) {
