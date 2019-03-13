@@ -6,17 +6,25 @@ $(document).ready(function() {
     console.log("handleCustomerEdit Initiated");
 
     var $inputs = $(".updateForm");
-
+    console.log($inputs);
     var customer = {
       id: $inputs[0][0].dataset.id,
-      name: $inputs[0][1].value
+      name: $inputs[0][1].value,
+      DOB: $inputs[0][2].value,
+      num: $inputs[0][3].value
     };
-    console.log(customer.name);
+    if (!customer.name) {
+      alert("You must enter a name!");
+      return;
+    }
+    console.log(customer);
     $.ajax({
       method: "PUT",
       url: "/api/customer/" + customer.id,
       data: {
-        name: customer.name
+        name: customer.name,
+        DOB: customer.DOB,
+        num: customer.num
       }
     }).then(function() {
       location.reload();
