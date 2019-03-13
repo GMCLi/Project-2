@@ -1,6 +1,7 @@
 <div id="home-page">
   <br>
   <div class="jumbotron jumbotron-fluid">
+<<<<<<< HEAD
     <div class="container">
       <h1 class="display-4 text-center">Car Rental Home Page!</h1>
       <p class="lead text-center">Please Enter Your Username and Password First!</p>
@@ -30,3 +31,40 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+=======
+    <div class="first-container">
+      <h1 class="display-4 text-center">Log In To Your Accout</h1>
+      <p class="lead text-center">Please Enter Your Email and Password</p>
+      <div id="loader">Loading...</div>
+    </div>
+    
+  </div>
+  <div id="firebaseui-auth-container"></div>
+</div>
+
+
+<script>
+
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+  var uiConfig = {
+    callbacks: {
+      signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+        window.location.href = '/'
+
+        return true;
+      },
+      uiShown: function () {
+        document.getElementById('loader').style.display = 'none';
+      }
+    },
+    signInFlow: 'popup',
+    signInSuccessUrl: '/',
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    ],
+  };
+  ui.start('#firebaseui-auth-container', uiConfig);
+
+</script>
+>>>>>>> 4719602173955926178bd7b040039d96ea0c8391

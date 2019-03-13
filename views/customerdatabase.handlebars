@@ -3,12 +3,39 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        
+
         <form class="clearfix mb-4" action="POST">
+          {{!-- Customer Name --}}
           <div class="form-group">
             <label for="customer-name">Customer Name</label>
-            <input type="text" id="customer-name" class="form-control" aria-describedby="customer-name" placeholder="Enter Customer Name">
+            <input type="text" id="customer-name" class="form-control" aria-describedby="customer-name"
+              placeholder="Enter Customer Name">
           </div>
+
+          {{!-- Customer DOB --}}
+          <div class="form-group">
+            <label for="customerDOB">Date of Birth (mm/dd/yyyy)</label>
+            <input type="date" id="customerDOB" class="form-control" aria-describedby="customerDOB"
+              placeholder="Enter Customer Date of Birth">
+          </div>
+
+          {{!-- Customer Phone Number --}}
+          <div class="form-group">
+            <label for="customerNum">Customer Phone Number</label>
+            <input type="text" id="customerNum" class="form-control" aria-describedby="customerNum"
+              placeholder="Enter Customer Number">
+          </div>
+
+          {{!-- Currently Renting --}}
+          <div class="form-group">
+            <input type="checkbox" id="customerRenting" class="checkbox" aria-describedby="customerRenting">
+            <label for="customerRenting">Currently Renting</label>
+            {{!-- Only Currently Renting, because Boolean is by default false (default === not renting) --}}
+            <div>
+              {{!-- <label for="customerRenting">Renting</label>  --}}
+            </div>
+          </div>
+<<<<<<< HEAD
           <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="customer-birthday">Customer Date Of Birth</label>
@@ -22,15 +49,26 @@
             <label for="example-description">Example Description</label>
             <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
           </div> --}}
+=======
+          
+          {{!-- Submit Button --}}
+>>>>>>> 4719602173955926178bd7b040039d96ea0c8391
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
+
+
+
+
+
+
         <h3>Customers:</h3>
         <ul id="example-list" class="list-group">
           {{#each customer}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="customer/{{this.dataValues.id}}">{{this.dataValues.customerName}}</a>
-            <button class="btn btn-warning float-right update" onclick="location.href = 'http://localhost:3000/customer/{{this.dataValues.id}}/customerupdate';">Update</button> 
-            <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button> 
+            <button class="btn btn-warning float-right update"
+              onclick="location.href = 'http://localhost:3000/customer/{{this.dataValues.id}}/customerupdate';">Update</button>
+            <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button>
           </li>
           {{/each}}
         </ul>

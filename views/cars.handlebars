@@ -31,7 +31,7 @@
             <input class="form-control" id="car-image" aria-describedby="car-image" placeholder="image URL"></input>
           </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="car-clean" value="false">
+            <input type="checkbox" name="car-clean" class="form-check-input check-ifchecked" id="car-clean" value="0">
             <label class="form-check-label active" for="car-clean">Car is clean</label>
           </div>
           {{!-- <div class="form-group">
@@ -43,20 +43,21 @@
             <label class="form-check-label active" for="fix-car">Car needs to be fixed</label>
           </div> --}}
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="is-available" value="false">
+            <input type="checkbox" name="is-available" class="form-check-input check-ifchecked" id="is-available"
+              value="0">
             <label class="form-check-label" for="is-available">Car is available</label>
           </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="fix-car" value="false">
+            <input type="checkbox" name="fix-car" class="form-check-input check-ifchecked" id="fix-car" value="0">
             <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
-          </div>                    
+          </div>
           <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="tank-empty" value="false">
+            <input type="checkbox" name="tank-empty" class="form-check-input check-ifchecked" id="tank-empty" value="0">
             <label class="form-check-label" for="tank-empty">Tank is empty</label>
           </div>
           <button id="submitcar" class="btn btn-primary float-right">Submit</button>
         </form>
-        <h3 class="clearfix">Available Cars</h3>
+        {{!-- <h3 class="clearfix">Available Cars</h3>
         <ul id="car-list" class="list-group">
           {{#each cars}}
           <li data-id="{{this.id}}" class="list-group-item">
@@ -64,9 +65,28 @@
             <button class="btn btn-danger float-right delete">ｘ</button>
             {{/each}}
         </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
-<script src="/js/cars.js"></script>
+      </div> --}}
+      </div> {{!end of row}}
+      <div class="row">
+        <div class="col offset-2" id="available-cars">
+          {{#each cars}}
+          <div class="card text-left car-card" style="width: 18rem;">
+            <img src={{this.image}} class="card-img-top" alt="Car image">
+            <div class="card-body">
+              <a href="car/{{this.id}}">
+                <h5 class="card-title">{{this.id}}.{{this.platenumber}}</h5>
+              </a>
+              <p class="card-body">{{this.make}}.{{this.model}}</p>
+              <button class="btn btn-warning float-right edit">Edit</button>
+              <button class="btn btn-danger float-right delete">Delete</button>
+            </div>
+          </div>{{!end of car card}}
+          {{/each}}
+          <br class="clearfix">
+        </div>
+      </div>
+    </div> {{!end of container}}
+  </div> {{!end of div - home}}
+
+  <script src="/js/cars.js"></script>

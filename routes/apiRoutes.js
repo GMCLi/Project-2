@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // Get all customers
   app.get("/api/customer", function(req, res) {
     db.customer.findAll({}).then(function(customerData) {
       res.json(customerData);
@@ -15,15 +15,19 @@ module.exports = function(app) {
     });
   });
 
-  // Create a new example
-  app.post("/api/Customer", function(req, res) {
-    console.log(req.body); //console logs: { customerName: 'blah' }
-    console.log(req.body.customerName); //blah
+  // Create a new customer
+  app.post("/api/customer", function(req, res) {
+    console.log("name: " + req.body.customerName);
+    console.log(req.body);
     db.customer
-      .create({ customerName: req.body.customerName })
+      .create({
+        customerName: req.body.customerName,
+        customerDOB: req.body.customerDOB,
+        customerNum: req.body.customerNum
+        // customerRenting: req.body
+      })
       .then(function(customerData) {
         res.json(customerData);
-        // res.redirect("/");
       });
   });
 
@@ -46,13 +50,17 @@ module.exports = function(app) {
 
   // PUT route for updating customer info by id
   app.put("/api/customer/:id", function(req, res) {
-    console.log(req);
+    console.log(req.body);
     db.customer
       .update(
-        { customerName: req.body.name },
+        {
+          customerName: req.body.name,
+          customerDOB: req.body.DOB,
+          customerNum: req.body.num
+        },
         {
           where: {
-            id: req.params.id
+            id: req.params.id //confirmed operational
           }
         }
       )
