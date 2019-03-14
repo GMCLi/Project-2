@@ -151,10 +151,10 @@ $(document).ready(function() {
       color: $carColor.val().trim(),
       year: $carYear.val().trim(),
       image: $carImage.val().trim(),
-      isclean: $isClean.check(),
-      isavailable: $isAvailable.check(),
-      fix: $fixCar.check(),
-      tankFull: $tankFull.check()
+      isclean: $isClean.prop("checked"),
+      isavailable: $isAvailable.prop("checked"),
+      fix: $fixCar.prop("checked"),
+      tankfull: $tankFull.prop("checked")
     };
 
     //check if checkbox is checked
@@ -184,10 +184,10 @@ $(document).ready(function() {
     $carColor.val("");
     $carYear.val("");
     $carImage.val("");
-    $isClean.check(false);
-    $isAvailable.check(false);
-    $fixCar.check(false);
-    $tankFull.check(false);
+    $isClean.prop("checked", false);
+    $isAvailable.prop("checked", false);
+    $fixCar.prop("checked", false);
+    $tankFull.prop("checked", false);
   };
 
   // handleDeleteBtnClick is called when an example's delete button is clicked
