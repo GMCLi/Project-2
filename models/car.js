@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     isclean: DataTypes.BOOLEAN,
     isavailable: DataTypes.BOOLEAN,
     fix: DataTypes.BOOLEAN,
-    tankempty: DataTypes.BOOLEAN
+    tankfull: DataTypes.BOOLEAN
   });
   return Car;
 };

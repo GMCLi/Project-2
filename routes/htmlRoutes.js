@@ -11,6 +11,14 @@ module.exports = function(app) {
       });
     });
   });
+  // Load create customer page calling nothing so that the page has a url
+  app.get("/createcustomer", function(req, res) {
+    db.customer.findAll({}).then(function() {
+      // console.log(customerData.dataValues);
+      res.render("createcustomer");
+    });
+  });
+
   //Load the home page with Authentication - Sasan
   app.get("/homepage", function(req, res) {
     res.render("homepage");
