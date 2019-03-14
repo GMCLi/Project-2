@@ -9,17 +9,10 @@ $(document).ready(function() {
   var $isClean = $("#car-clean");
   var $isAvailable = $("#is-available");
   var $fixCar = $("#fix-car");
-  var $tankEmpty = $("#tank-empty");
+  var $tankFull = $("#tank-full");
   var $submitBtn = $("#submitcar");
   //var $submitUpdate = $("#updatecar");
   var $carList = $("#car-list");
-
-  //check if checkbox is checked
-  // $(".check-ifchecked").each(function(e) {
-  //   if ($(this).val() == 1) {
-  //     $(this).attr("checked", "checked");
-  //   }
-  // });
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -158,11 +151,21 @@ $(document).ready(function() {
       color: $carColor.val().trim(),
       year: $carYear.val().trim(),
       image: $carImage.val().trim(),
-      isclean: $isClean.val(),
-      isavailable: $isAvailable.val(),
-      fix: $fixCar.val(),
-      tankempty: $tankEmpty.val()
+      isclean: $isClean.check(),
+      isavailable: $isAvailable.check(),
+      fix: $fixCar.check(),
+      tankFull: $tankFull.check()
     };
+
+    //check if checkbox is checked
+    // $(".check-ifchecked").each(function(e) {
+    //   if ($(this).val() == 1) {
+    //     $(this).attr("checked", "checked");
+    //   }
+    // });
+
+    /* for in....https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
+     */
 
     if (!(car.make && car.model)) {
       alert("You must enter car make and model!");
@@ -181,10 +184,10 @@ $(document).ready(function() {
     $carColor.val("");
     $carYear.val("");
     $carImage.val("");
-    $isClean.prop("checked", 0);
-    $isAvailable.prop("checked", 0);
-    $fixCar.prop("checked", 0);
-    $tankEmpty.prop("checked", 0);
+    $isClean.check(false);
+    $isAvailable.check(false);
+    $fixCar.check(false);
+    $tankFull.check(false);
   };
 
   // handleDeleteBtnClick is called when an example's delete button is clicked
