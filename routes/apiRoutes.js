@@ -8,6 +8,9 @@ module.exports = function(app) {
     });
   });
 
+  // Search bar get all things with the search term
+  // app.get("")
+
   // Get all cars - Paskwa's changes
   app.get("/api/cars", function(req, res) {
     db.Car.findAll({}).then(function(dbCars) {
@@ -17,7 +20,7 @@ module.exports = function(app) {
 
   // Create a new customer
   app.post("/api/customer", function(req, res) {
-    console.log("name: " + req.body.customerName);
+    console.log("name: " + req.body.customerName); //not called so app.post is not called
     console.log(req.body);
     db.customer
       .create({

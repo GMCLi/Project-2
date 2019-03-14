@@ -3,22 +3,24 @@ var $customerName = $("#customer-name");
 var $submitBtn = $("#submit");
 var $DOBsubmit = $("#customerDOB");
 // var $customerRenting = $("#customerRenting");
-var $customerNum = $("#customerNumUpdate");
+var $customerNum = $("#customerNum");
 var $exampleList = $("#example-list");
+
 // var $customerNameUpdate = $("#customer-nameUpdate");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveCustomer: function(customerData) {
+    console.log("API.saveCustomer running"); //not called so api.saveCustomer not running
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/customer",
+      url: "/api/customer",
       data: JSON.stringify(customerData)
     }).then(function() {
-      location.reload();
+      // location.reload();
     });
   },
 
@@ -70,6 +72,7 @@ var refreshExamples = function() {
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
+  console.log("handleFormSubmit running"); //not running so handleFormSubmit not running
   event.preventDefault();
 
   var customer = {
@@ -79,13 +82,12 @@ var handleFormSubmit = function(event) {
     // customerRenting: $customerRenting.val()
   };
 
-  if (
-    !(customer.customerName && customer.customerDOB && customer.customerNum)
-  ) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
+  // if (
+  //   !(customer.customerName && customer.customerDOB && customer.customerNum)
+  // ) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
   API.saveCustomer(customer).then(function() {
     refreshExamples();
     Location.reload();
@@ -109,5 +111,5 @@ var handleDeleteBtnClick = function() {
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
+$submitBtn.on("click", handleFormSubmit, console.log("submit clicked"));
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
