@@ -19,6 +19,13 @@ module.exports = function(app) {
     });
   });
 
+  //load page for search results
+  app.get("/search", function(req, res) {
+    db.customer.findAll({}).then(function() {
+      res.render("search");
+    });
+  });
+
   //Load the home page with Authentication - Sasan
   app.get("/homepage", function(req, res) {
     res.render("homepage");

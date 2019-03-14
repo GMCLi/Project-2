@@ -11,13 +11,13 @@ module.exports = function(app) {
   });
 
   // Search bar get all things with the search term
-  app.get("/search", (req, res) => {
-    var { term } = req.query;
+  // app.get("/search", (req, res) => {
+  //   var { term } = req.query;
 
-    db.customer.findAll({ where: { [Op.like]: "%" + term + "%"}})
-      .then(Data => res.render('data', { Data }))
-      .catch(err => console.log(err));
-  })
+  //   db.customer.findAll({ where: { [Op.like]: "%" + term + "%"}})
+  //     .then(Data => res.render('data', { Data }))
+  //     .catch(err => console.log(err));
+  // })
 
   // Get all cars - Paskwa's changes
   app.get("/api/cars", function(req, res) {
