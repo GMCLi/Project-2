@@ -1,6 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Customer</h5>
+          <p>
+            <strong>ID</strong>: {{customerID}}</p>
+          <p>
+            <p>
+              <strong>Customer Name</strong>: {{customerName}}</p>
+            <p>
+              <strong>Customer Date of Birth</strong>: {{customerDOB}}
+            </p>
+            <p>
+              <strong>Customer Phone Number</strong>: {{customerNum}}
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
       <h1>{{msg}}</h1>
 
       <form class="clearfix mb-4 updateForm">
@@ -27,29 +50,6 @@
         </div>
         <button type="submit" id="updatesubmit" class="btn btn-primary float-right">Submit</button>
       </form>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">Customer</h5>
-          <p>
-            <strong>ID</strong>: {{customerID}}</p>
-          <p>
-            <p>
-              <strong>Customer Name</strong>: {{customerName}}</p>
-            <p>
-              <strong>Customer Date of Birth</strong>: {{customerDOB}}
-            </p>
-            <p>
-              <strong>Customer Phone Number</strong>: {{customerNum}}
-            </p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
