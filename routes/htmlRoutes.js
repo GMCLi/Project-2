@@ -34,6 +34,15 @@ module.exports = function(app) {
     });
   });
 
+  // Load create car page - Paskwa's changes
+  app.get("/createcar", function(req, res) {
+    db.Car.findAll({}).then(function(dbCars) {
+      res.render("createcar", {
+        msg: "Welcome!",
+        cars: dbCars
+      });
+    });
+  });
   // Load customer page and pass in an customer by id
   app.get("/customer/:id", function(req, res) {
     db.customer
