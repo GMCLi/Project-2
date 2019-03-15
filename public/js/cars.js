@@ -41,6 +41,8 @@ $(document).ready(function() {
       return $.ajax({
         url: "/api/cars/" + id,
         type: "DELETE"
+      }).then(function() {
+        location.reload();
       });
     }
   };
@@ -198,13 +200,13 @@ $(document).ready(function() {
 
   // handlecarDeleteBtnClick is called when an example's delete button is clicked
   // Remove the example from the db and refresh the list
-  var handlecarDeleteBtnClick = function() {
+  var handlecarDeleteBtn = function(id) {
     alert("you're sure you want to delete?");
-    var carToDelete = $(this)
-      .parent()
-      .attr("data-id");
+    // var carToDelete = id
+    //   .parent()
+    //   .attr("data-id");
 
-    API.deleteCar(carToDelete).then(function() {
+    API.deleteCar(id).then(function() {
       console.log("delete successful");
       refreshCards();
     });
@@ -216,7 +218,7 @@ $(document).ready(function() {
     alert("I see you want to delete this");
     var carId = $(this).attr("data-id");
     console.log("The car you want to delete is " + carId);
-    handlecarDeleteBtnClick(carId);
+    handlecarDeleteBtn(carId);
   });
   $showcarInfo.on("click", function() {
     $("#car-details").removeClass("hide-carinfo");
