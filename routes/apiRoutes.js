@@ -54,7 +54,7 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
+  // Delete an customer by id
   app.delete("/api/customer/:id", function(req, res) {
     db.customer
       .destroy({ where: { id: req.params.id } })
