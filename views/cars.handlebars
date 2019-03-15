@@ -2,93 +2,29 @@
 <div id="home">
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-8 offset-2" id="available-cars">
         <h1>{{msg}}</h1>
-        <h2>Manage your Classic Cars</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="plate-number">Plate Number</label>
-            <input type="text" id="plate-number" class="form-control" aria-describedby="plate-number"
-              placeholder="Plate Number">
+        <h3>Available Vehicles:</h3>
+        <div class="car-list">
+        {{#each cars}}
+        <div class="card text-left car-card" id="car-card" data-id = {{this.id}}>
+          <img src={{this.image}} class="card-img-top" alt="Car image">
+          <div class="card-body">
+            <a href="car/{{this.id}}">
+              <h5 class="card-title">{{this.id}}.{{this.platenumber}}</h5>
+            </a>
+            <p class="card-body">{{this.make}}.{{this.model}}</p>
+            <a href="car/{{this.id}}" class="btn btn-warning float-right edit">Edit</a>
+            <button class="btn btn-danger float-right deletecar" id="car-delete" data-id={{car.id}}>Delete</button>
           </div>
-          <div class="form-group">
-            <label for="car-make">Make</label>
-            <input type="text" id="car-make" class="form-control" aria-describedby="car-make" placeholder="Make">
-          </div>
-          <div class="form-group">
-            <label for="car-model">Model</label>
-            <input type="text" id="car-model" class="form-control" aria-describedby="car-model" placeholder="Model">
-          </div>
-          <div class="form-group">
-            <label for="car-color">Color</label>
-            <input class="form-control" id="car-color" aria-describedby="car-color" placeholder="Color"></input>
-          </div>
-          <div class="form-group">
-            <label for="car-year">Year</label>
-            <input class="form-control" id="car-year" aria-describedby="car-year" placeholder="1976"></input>
-          </div>
-          <div class="form-group">
-            <label for="car-image">Image</label>
-            <input class="form-control" id="car-image" aria-describedby="car-image" placeholder="image URL"></input>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" name="car-clean" class="form-check-input check-ifchecked" id="car-clean" value="0">
-            <label class="form-check-label active" for="car-clean">Car is clean</label>
-          </div>
-          {{!-- <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="is-available" value="false">
-            <label class="form-check-label active" for="is-available">Car is available</label>
-          </div> --}}
-          {{!-- <div class="form-group">
-            <input type="checkbox" class="form-check-input" id="fix-car" value="false">
-            <label class="form-check-label active" for="fix-car">Car needs to be fixed</label>
-          </div> --}}
-          <div class="form-group">
-            <input type="checkbox" name="is-available" class="form-check-input check-ifchecked" id="is-available"
-              value="0">
-            <label class="form-check-label" for="is-available">Car is available</label>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" name="fix-car" class="form-check-input check-ifchecked" id="fix-car" value="0">
-            <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" name="tank-empty" class="form-check-input check-ifchecked" id="tank-empty" value="0">
-            <label class="form-check-label" for="tank-empty">Tank is empty</label>
-          </div>
-          <button id="submitcar" class="btn btn-primary float-right">Submit</button>
-        </form>
-        {{!-- <h3 class="clearfix">Available Cars</h3>
-        <ul id="car-list" class="list-group">
-          {{#each cars}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="car/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-            {{/each}}
-        </ul>
-
-      </div> --}}
-      </div> {{!end of row}}
-      <div class="row">
-        <div class="col offset-2" id="available-cars">
-          {{#each cars}}
-          <div class="card text-left car-card" style="width: 18rem;">
-            <img src={{this.image}} class="card-img-top" alt="Car image">
-            <div class="card-body">
-              <a href="car/{{this.id}}">
-                <h5 class="card-title">{{this.id}}.{{this.platenumber}}</h5>
-              </a>
-              <p class="card-body">{{this.make}}.{{this.model}}</p>
-              <button class="btn btn-warning float-right edit">Edit</button>
-              <button class="btn btn-danger float-right delete">Delete</button>
-            </div>
-          </div>{{!end of car card}}
-          {{/each}}
-          <br class="clearfix">
-        </div>
+        </div>{{!end of car card}}
+        {{/each}}
+        <br class="clearfix">
+        </div> {{! end of car list}}
       </div>
     </div>
-  </div> {{!end of container}}
+  </div>
+</div> {{!end of container}}
 </div> {{!end of div - home}}
 
 </div>
