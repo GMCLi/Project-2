@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-8 offset-2">
       <h1>{{msg}}</h1>
-      <h2>Manage your Classic Cars</h2>
+      <h2>Add a new vehicle</h2>
       <form class="clearfix mb-4" action="POST">
         <div class="form-group">
           <label for="plate-number">Plate Number</label>
@@ -57,16 +57,8 @@
         </div>
         <button id="submitcar" class="btn btn-primary float-right">Submit</button>
       </form>
-      {{!-- <h3 class="clearfix">Available Cars</h3>
-        <ul id="car-list" class="list-group">
-          {{#each cars}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="car/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-            {{/each}}
-        </ul>
-
-      </div> --}}
+      <a href="/cars">← Back To Cars</a>
     </div> {{!end of row}}
+
   </div> {{!end of container}}
   <script src="/js/cars.js"></script>
