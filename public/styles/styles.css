@@ -61,3 +61,7 @@
 .hide-carinfo {
   visibility: hidden;
 }
+
+.car-card {
+  width: 18rem;
+}

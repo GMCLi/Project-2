@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       validate: {
         isUrl: true, // checks for url format (http://foo.com)
-        len: [3, 500] // only allow values with length between 5 and 500
+        len: [3, 1000] // only allow values with length between 5 and 500
       }
     },
     isclean: DataTypes.BOOLEAN,
