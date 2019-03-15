@@ -1,8 +1,37 @@
-<section id="search" class="search-wrap">
-  <h1>Searching placeholder title</h1>
-  <form action="/routes/apiRoutes.js/search" class="search-form">
-    <i class="fas fa-search"></i>
-    <input type="seach" name="term" placeholder="Search for a customer or vehicle">
-    <input type="submit" value="Search">
-  </form>
-</section>
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{msg}}</h1>
+        <h3>Customers:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each customer}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="customer/{{this.dataValues.id}}">{{this.dataValues.customerName}}</a>
+            <button class="btn btn-warning float-right update"
+              onclick="location.href = 'http://localhost:3000/customer/{{this.dataValues.id}}/customerupdate';">Update</button>
+            <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      {{!-- <div class="col-4">
+        <h1>{{msg}}</h1>
+        <h3>Vehicles:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each customer}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="customer/{{this.dataValues.id}}">{{this.dataValues.customerName}}</a>
+            <button class="btn btn-warning float-right update"
+              onclick="location.href = 'http://localhost:3000/customer/{{this.dataValues.id}}/customerupdate';">Update</button>
+            <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div> --}}
+
+
+    </div>
+  </div>
+</div>

@@ -1,6 +1,4 @@
 var db = require("../models");
-var Sequelize = require("sequelize");
-var Op = Sequelize.Op;
 
 module.exports = function(app) {
   // Get all customers
@@ -11,13 +9,19 @@ module.exports = function(app) {
   });
 
   // Search bar get all things with the search term
-  app.get("/search", (req, res) => {
-    var { term } = req.query;
-
-    db.customer.findAll({ where: { [Op.like]: "%" + term + "%"}})
-      .then(Data => res.render('data', { Data }))
-      .catch(err => console.log(err));
-  })
+  app.get("/api/customer/:Name", function(req, res) {
+    console.log(req.params);
+    db.customer
+      .findAll({
+        where: {
+          customerName: req.params.Name
+        }
+      })
+      .then(function(customerData) {
+        console.log("customerData comes as...CustomerData???" + customerData);
+        res.json(customerData);
+      });
+  });
 
   // Get all cars - Paskwa's changes
   app.get("/api/cars", function(req, res) {
@@ -50,7 +54,7 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
+  // Delete an customer by id
   app.delete("/api/customer/:id", function(req, res) {
     db.customer
       .destroy({ where: { id: req.params.id } })

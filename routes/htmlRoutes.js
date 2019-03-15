@@ -11,13 +11,23 @@ module.exports = function(app) {
       });
     });
   });
-  // Load create customer page calling nothing so that the page has a url
+  // Load create customer page
   app.get("/createcustomer", function(req, res) {
     db.customer.findAll({}).then(function() {
       // console.log(customerData.dataValues);
       res.render("createcustomer");
     });
   });
+
+  //load page for search results from searchbar
+  // app.get("/search", function(req, res) {
+  //   db.customer.findAll({}).then(function(customerData) {
+  //     res.render("search", {
+  //       msg: "Searched Customer",
+  //       customer: customerData
+  //     });
+  //   });
+  // });
 
   //Load the home page with Authentication - Sasan
   app.get("/homepage", function(req, res) {
