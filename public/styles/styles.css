@@ -23,7 +23,9 @@
 }
 
  body {
-   background-color: beige;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px; 
+   background-color: rgb(225, 225, 225);
    height: 100%;
    margin: auto;  
  }
@@ -46,3 +48,4 @@
   .create-customer {
     margin: 5%;  
   }
+ 
