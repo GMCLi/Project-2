@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{> nav/nav}}
 <div id="home">
   <div class="container">
@@ -86,8 +87,33 @@
           {{/each}}
           <br class="clearfix">
         </div>
+=======
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h1>{{msg}}</h1>
+      <br>
+      <h3>Available Cars</h3>
+      <div class="col offset-2" id="available-cars">
+        {{#each cars}}
+        <div class="card text-left car-card" style="width: 18rem;">
+          <img src={{this.image}} class="card-img-top" alt="Car image">
+          <div class="card-body">
+            <a href="car/{{this.id}}">
+              <h5 class="card-title">{{this.id}}.{{this.platenumber}}</h5>
+            </a>
+            <p class="card-body">{{this.make}}.{{this.model}}</p>
+            <button class="btn btn-warning float-right edit">Edit</button>
+            <button class="btn btn-danger float-right delete">Delete</button>
+          </div>
+        </div>{{!end of car card}}
+        {{/each}}
+        <br class="clearfix">
+>>>>>>> 6b47d7fa69deb3c15e0574ac046bd44f46f94df2
       </div>
-    </div> {{!end of container}}
-  </div> {{!end of div - home}}
+    </div>
+  </div> {{!end of container}}
+</div> {{!end of div - home}}
 
-  <script src="/js/cars.js"></script>
+</div>
+<script src="/js/cars.js"></script>

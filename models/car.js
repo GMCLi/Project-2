@@ -5,7 +5,13 @@ module.exports = function(sequelize, DataTypes) {
     model: DataTypes.STRING,
     color: DataTypes.STRING,
     year: DataTypes.STRING,
-    image: DataTypes.STRING,
+    image: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true, // checks for url format (http://foo.com)
+        len: [3, 500] // only allow values with length between 5 and 500
+      }
+    },
     isclean: DataTypes.BOOLEAN,
     isavailable: DataTypes.BOOLEAN,
     fix: DataTypes.BOOLEAN,
