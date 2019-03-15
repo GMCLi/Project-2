@@ -6,7 +6,9 @@
 
    font-family: "Times New Roman", Times, serif;
    color: white;
- 
+   margin: auto;
+   
+   
  }
 .jumbotron {
   background-image: url(car.jpg);
@@ -20,13 +22,14 @@
   
 }
 
- body {
-   background-color: beige;
+ body, html {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  background-image: url(car2.jpg);
    height: 100%;
    /* background-image: url("./logo.jpg");
    background-size: cover; */
  }
-
 
 .carthumb {
   width:100px;
@@ -41,15 +44,20 @@
 
 .dropdown:hover .dropdown-menu {
   display: block;
-}
 
-.navbar {
-  /* background-image: url("./navbar.jpg"); */
-  background-size: 100%;
-}
+  }
+  .create-customer {
+    margin: 5%;  
+  }
 
-.nav-item {
-  background-color: white;
-  margin-right: 10px;
-  opacity: 0.7;
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+  }
+ 
+/* Paskwa car updates */
+
+.hide-carinfo {
+  visibility: hidden;
 }

@@ -9,17 +9,15 @@ $(document).ready(function() {
   var $isClean = $("#car-clean");
   var $isAvailable = $("#is-available");
   var $fixCar = $("#fix-car");
-  var $tankEmpty = $("#tank-empty");
-  var $submitBtn = $("#submitcar");
-  //var $submitUpdate = $("#updatecar");
-  var $carList = $("#car-list");
+  var $tankFull = $("#tank-full");
 
-  //check if checkbox is checked
-  // $(".check-ifchecked").each(function(e) {
-  //   if ($(this).val() == 1) {
-  //     $(this).attr("checked", "checked");
-  //   }
-  // });
+  //buttons
+  var $carsubmitBtn = $("#submitcar"); //createCar
+  var $cardelBtn = $("#car-delete"); //deleteCar
+  var $showcarInfo = $("#show-carinfo"); //show carInfo in order to edit
+  // var $submitUpdate = $("#updatecar"); //submit updateCar
+  var $carList = $("#car-list"); //identify Div to append carCard
+  var $updateCar = $("#updatecar"); //updateCar
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -43,6 +41,8 @@ $(document).ready(function() {
       return $.ajax({
         url: "/api/cars/" + id,
         type: "DELETE"
+      }).then(function() {
+        location.reload();
       });
     }
   };
@@ -81,38 +81,41 @@ $(document).ready(function() {
   // refreshCards gets new cars from the db and repopulates the list
   var refreshCards = function() {
     API.getCars().then(function(data) {
+      console.log(data);
       var $cars = data.map(function(car) {
-        //add div div class="col-lg-4 col-sm-6 car-card"
+        //add div "card text-left car-card" id="car-list"
 
         var $carCard = $("<div>").attr({
-          class: "col-lg-4 col-sm-6 car-card",
+          class: "card text-left car-card",
+          id: "car-list",
           "data-id": car.id
         });
 
-        //add div div class="card and append to $carCard
-
-        var $div = $("<div").addClass("card");
-        $carCard.append($div);
-
-        //add image and append to $div
+        //add image and append to $carCard
         var $img = $("<img>")
           .attr("src", car.image)
-          .addClass("card-img-top");
-        $div.append($img);
+          .addClass("card-img-top")
+          .attr("alt", "car image");
+        $carCard.append($img);
 
-        //add card body div and append it to $div
+        //add card body div and append it to $carCard
 
-        var $cardDiv = $("<div");
-        $cardDiv.addClass("card-body text-left");
-        $div.append($cardDiv);
+        var $cardBody = $("<div");
+        $cardBody.addClass("card-body");
+        $div.append($carCard);
 
-        //add a href that points to car/id and append to $div
-        var $a = $("<a>")
-          .text(car.platenumber)
-          .attr("href", "/car/" + car.id);
-        $a.addClass("card-title");
+        //add a href that points to car/id and append to $cardBody
 
-        $cardDiv.append($a);
+        var $h5 = $("<h5>").attr({
+          text: car.id + " " + car.platenumber,
+          class: "card-title"
+        });
+
+        var $a = $("<a>").attr("href", "/car/" + car.id);
+
+        $a.append($h5);
+
+        $cardBody.append($a);
 
         //add card paragraph with make and model
 
@@ -121,14 +124,22 @@ $(document).ready(function() {
           text: car.make + " " + car.model
         });
 
-        $cardDiv.append($p);
+        $cardBody.append($p);
 
         //Add edit and delete buttons
-        var $button = $("<button>")
+        var $edit = $("<a>")
+          .text("Edit")
+          .attr("href", "/car/" + car.id);
+
+        $edit.addClass("btn btn-warning float-right edit");
+
+        $cardBody.append($edit);
+
+        var $delBtn = $("<button>")
           .addClass("btn btn-danger float-right delete")
           .text("Delete");
 
-        $cardDiv.append($button);
+        $cardBody.append($delBtn);
         // $("#car-card").append($carCard);
 
         return $carCard;
@@ -143,11 +154,11 @@ $(document).ready(function() {
     });
   };
 
-  //refreshCards();
+  refreshCards();
 
-  // handleFormSubmit is called whenever we submit a new example
+  // handlecarFormSubmit is called whenever we submit a new example
   // Save the new example to the db and refresh the list
-  var handleFormSubmit = function(event) {
+  var handlecarFormSubmit = function(event) {
     event.preventDefault();
     alert("You want to add this car?");
 
@@ -158,10 +169,10 @@ $(document).ready(function() {
       color: $carColor.val().trim(),
       year: $carYear.val().trim(),
       image: $carImage.val().trim(),
-      isclean: $isClean.val(),
-      isavailable: $isAvailable.val(),
-      fix: $fixCar.val(),
-      tankempty: $tankEmpty.val()
+      isclean: $isClean.prop("checked"),
+      isavailable: $isAvailable.prop("checked"),
+      fix: $fixCar.prop("checked"),
+      tankfull: $tankFull.prop("checked")
     };
 
     if (!(car.make && car.model)) {
@@ -172,7 +183,7 @@ $(document).ready(function() {
     console.log(car);
 
     API.saveCar(car).then(function() {
-      refreshCars();
+      refreshCards();
     });
 
     $plateNumber.val("");
@@ -181,25 +192,36 @@ $(document).ready(function() {
     $carColor.val("");
     $carYear.val("");
     $carImage.val("");
-    $isClean.prop("checked", 0);
-    $isAvailable.prop("checked", 0);
-    $fixCar.prop("checked", 0);
-    $tankEmpty.prop("checked", 0);
+    $isClean.prop("checked", false);
+    $isAvailable.prop("checked", false);
+    $fixCar.prop("checked", false);
+    $tankFull.prop("checked", false);
   };
 
-  // handleDeleteBtnClick is called when an example's delete button is clicked
+  // handlecarDeleteBtnClick is called when an example's delete button is clicked
   // Remove the example from the db and refresh the list
-  var handleDeleteBtnClick = function() {
-    var idToDelete = $(this)
-      .parent()
-      .attr("data-id");
+  var handlecarDeleteBtn = function(id) {
+    alert("you're sure you want to delete?");
+    // var carToDelete = id
+    //   .parent()
+    //   .attr("data-id");
 
-    API.deleteCar(idToDelete).then(function() {
-      refreshCars();
+    API.deleteCar(id).then(function() {
+      console.log("delete successful");
+      refreshCards();
     });
   };
 
   // Add event listeners to the submit and delete buttons
-  $submitBtn.on("click", handleFormSubmit);
-  $carList.on("click", ".delete", handleDeleteBtnClick);
+  $carsubmitBtn.on("click", handlecarFormSubmit);
+  $cardelBtn.on("click", function() {
+    alert("I see you want to delete this");
+    var carId = $(this).attr("data-id");
+    console.log("The car you want to delete is " + carId);
+    handlecarDeleteBtn(carId);
+  });
+  $showcarInfo.on("click", function() {
+    $("#car-details").removeClass("hide-carinfo");
+  });
+  // $updateCar.on("click", handleUpdateCar);
 }); //end of document ready
