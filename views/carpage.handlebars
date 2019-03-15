@@ -9,7 +9,7 @@
             <p class="card-text"><strong>Year:</strong>{{car.year}}</p>
             <p class="card-text"><strong>Model:</strong>{{car.make}}</p>
             <p class="card-text"><strong>Make: </strong>{{car.make}}</p>
-            <a href= "/car/{{car.id}}/update" id="updatecar" class="btn btn-primary">Manage this car</a>
+            <button id="show-carinfo" class="btn btn-primary">Manage this car</button>
           </div>
         </div>
         <a href="/cars">← Back To Cars</a>
@@ -17,52 +17,77 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row hide-carinfo" id="car-details">
   <div class="col-8 offset-2">
     <h2>Update Car</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="plate-number">Plate Number</label>
-            <input value={{car.platenumber}} type="text" id="car-platenumber" class="form-control" aria-describedby="plate-number" placeholder="Plate Number">
-          </div>
-          <div class="form-group">
-            <label for="car-make">Make</label>
-            <input value={{car.make}} type="text" id="car-make" class="form-control" aria-describedby="car-make" placeholder="Make">
-          </div>
-          <div class="form-group">
-            <label for="car-model">Model</label>
-            <input value={{car.model}} type="text" id="car-model" class="form-control" aria-describedby="car-model" placeholder="Model">
-          </div>
-          <div class="form-group">
-            <label for="car-color">Color</label>
-            <input value={{car.color}} class="form-control" id="car-color" aria-describedby="car-color" placeholder="Color"></input>
-          </div>
-          <div class="form-group">
-            <label for="car-year">Year</label>
-            <input value={{car.year}} class="form-control" id="car-year" aria-describedby="car-year" placeholder="1976"></input>
-          </div>
-          <div class="form-group">
-            <label for="car-image">Image</label>
-            <input value={{car.image}} class="form-control" id="car-image" aria-describedby="car-image" placeholder="image URL"></input>
-          </div>
-         <div class="form-group">
-            <input value={{car.isclean}} type="checkbox" class="form-check-input check-ifchecked" id="car-clean" name="car-clean">
-            <label class="form-check-label" for="car-clean">Car is clean</label>
-          </div>
-          <div class="form-group">
-            <input value={{car.isavailable}} type="checkbox" class="form-check-input check-ifchecked" id="is-available" name="is-available">
-            <label class="form-check-label" for="is-available">Car is available</label>
-          </div>
-          <div class="form-group">
-            <input value={{car.fix}} type="checkbox" class="form-check-input check-ifchecked" id="fix-car" name="fix-car">
-            <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
-          </div>
-          <div class="form-group">
-            <input value = {{car.tankFull}} type="checkbox" class="form-check-input check-ifchecked" id="tank-full" name="tank-full">
-            <label class="form-check-label" for="tank-full">Tank is empty</label>
-          </div>
-          <button id="updatecar" class="btn btn-primary float-right">Submit</button>
-        </form>
+    <form class="clearfix mb-4">
+      <div class="form-group">
+        <label for="plate-number">Plate Number</label>
+        <input value={{car.platenumber}} type="text" id="car-platenumber" class="form-control"
+          aria-describedby="plate-number" placeholder="Plate Number">
+      </div>
+      <div class="form-group">
+        <label for="car-make">Make</label>
+        <input value={{car.make}} type="text" id="car-make" class="form-control" aria-describedby="car-make"
+          placeholder="Make">
+      </div>
+      <div class="form-group">
+        <label for="car-model">Model</label>
+        <input value={{car.model}} type="text" id="car-model" class="form-control" aria-describedby="car-model"
+          placeholder="Model">
+      </div>
+      <div class="form-group">
+        <label for="car-color">Color</label>
+        <input value={{car.color}} class="form-control" id="car-color" aria-describedby="car-color"
+          placeholder="Color"></input>
+      </div>
+      <div class="form-group">
+        <label for="car-year">Year</label>
+        <input value={{car.year}} class="form-control" id="car-year" aria-describedby="car-year"
+          placeholder="1976"></input>
+      </div>
+      <div class="form-group">
+        <label for="car-image">Image</label>
+        <input value={{car.image}} class="form-control" id="car-image" aria-describedby="car-image"
+          placeholder="image URL"></input>
+      </div>
+      <div class="form-group">
+        {{#if car.isclean}}
+        <input type="checkbox" class="form-check-input " id="car-clean" checked="checked"       name="car-clean">
+        {{else}}
+        <input type="checkbox" class="form-check-input " id="car-clean" name="car-clean">
+        {{/if}}
+        <label class="form-check-label" for="car-clean">Car is clean</label>
+      </div>
+      <div class="form-group">
+        {{#if car.isavailable}}
+        <input type="checkbox" class="form-check-input " id="is-available"
+          name="is-available" checked="checked">
+        {{else}}
+        <input type="checkbox" class="form-check-input " id="is-available" name="is-available">
+        {{/if}}
+        <label class="form-check-label" for="is-available">Car is available</label>
+      </div>
+      <div class="form-group">
+        {{#if car.fix}}
+        <input type="checkbox" class="form-check-input " id="fix-car" name="fix-car" checked="checked">
+        {{else}}
+        <input type="checkbox" class="form-check-input " id="fix-car" name="fix-car">
+        {{/if}}
+        <label class="form-check-label" for="fix-car">Car needs to be fixed</label>
+      </div>
+      <div class="form-group">
+        {{#if car.tankfull}}
+        <input checked="checked" type="checkbox" class="form-check-input " id="tank-full"
+          name="tank-full">
+        {{else}}
+        <input checked="checked" type="checkbox" class="form-check-input " id="tank-full"
+          name="tank-full">
+          {{/if}}
+        <label class="form-check-label" for="tank-full">Tank is empty</label>
+      </div>
+      <button id="updatecar" class="btn btn-primary float-right">Submit</button>
+    </form>
   </div>
 </div>
 </div>

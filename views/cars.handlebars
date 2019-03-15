@@ -13,8 +13,8 @@
               <h5 class="card-title">{{this.id}}.{{this.platenumber}}</h5>
             </a>
             <p class="card-body">{{this.make}}.{{this.model}}</p>
-            <button class="btn btn-warning float-right edit">Edit</button>
-            <button class="btn btn-danger float-right delete">Delete</button>
+            <button class="btn btn-warning float-right edit" onclick="location.href = 'http://localhost:3000/car/{{this.id}}';" class="btn btn-danger">Update</button> </button>
+            <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button>
           </div>
         </div>{{!end of car card}}
         {{/each}}

@@ -40,3 +40,9 @@
 .dropdown:hover .dropdown-menu {
   display: block;
   }
+
+  /* Car Update Page - hide care info - Paskwa */
+
+  .hide-carinfo {
+    visibility: hidden;
+  }

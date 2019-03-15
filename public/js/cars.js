@@ -10,8 +10,9 @@ $(document).ready(function() {
   var $isAvailable = $("#is-available");
   var $fixCar = $("#fix-car");
   var $tankFull = $("#tank-full");
-  var $submitBtn = $("#submitcar");
-  //var $submitUpdate = $("#updatecar");
+  var $submitCar = $("#submitcar");
+  var $showcarInfo = $("#show-carinfo");
+  var $updateCar = $("#updatecar");
   var $carList = $("#car-list");
 
   // The API object contains methods for each kind of request we'll make
@@ -36,6 +37,13 @@ $(document).ready(function() {
       return $.ajax({
         url: "/api/cars/" + id,
         type: "DELETE"
+      });
+    },
+    updateCar: function(id){
+      return $.ajax({
+        url: "/api/car/" + id,
+        type: "PUT",
+        data: JSON.stringify(carUpdate)
       });
     }
   };
@@ -138,8 +146,8 @@ $(document).ready(function() {
 
   //refreshCards();
 
-  // handleFormSubmit is called whenever we submit a new example
-  // Save the new example to the db and refresh the list
+  // handleFormSubmit is called whenever we submit a new car
+  // Save the new car to the db and refresh the list
   var handleFormSubmit = function(event) {
     event.preventDefault();
     alert("You want to add this car?");
@@ -156,16 +164,6 @@ $(document).ready(function() {
       fix: $fixCar.check(),
       tankFull: $tankFull.check()
     };
-
-    //check if checkbox is checked
-    // $(".check-ifchecked").each(function(e) {
-    //   if ($(this).val() == 1) {
-    //     $(this).attr("checked", "checked");
-    //   }
-    // });
-
-    /* for in....https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
-     */
 
     if (!(car.make && car.model)) {
       alert("You must enter car make and model!");
@@ -190,6 +188,38 @@ $(document).ready(function() {
     $tankFull.check(false);
   };
 
+    // handleUpdateCar is called whenever we submit a new example
+  // Save the new car to the db and refresh the list
+  var handleUpdateCar = function(event) {
+    event.preventDefault();
+    alert("You want to update this car?");
+
+    var car = {
+      platenumber: $plateNumber.val().trim(),
+      make: $carMake.val().trim(),
+      model: $carModel.val().trim(),
+      color: $carColor.val().trim(),
+      year: $carYear.val().trim(),
+      image: $carImage.val().trim(),
+      isclean: $isClean.check(),
+      isavailable: $isAvailable.check(),
+      fix: $fixCar.check(),
+      tankFull: $tankFull.check()
+    };
+
+    if (!(car.make && car.model)) {
+      alert("You must enter car make and model!");
+      return;
+    }
+
+    console.log(car);
+
+    API.updateCar(car).then(function() {
+      // refreshCars();
+      console.log("car updated");
+    });
+  };
+
   // handleDeleteBtnClick is called when an example's delete button is clicked
   // Remove the example from the db and refresh the list
   var handleDeleteBtnClick = function() {
@@ -202,7 +232,11 @@ $(document).ready(function() {
     });
   };
 
-  // Add event listeners to the submit and delete buttons
-  $submitBtn.on("click", handleFormSubmit);
+  // Add event listeners to the submit, edit and delete buttons
+  $submitCar.on("click", handleFormSubmit);
   $carList.on("click", ".delete", handleDeleteBtnClick);
+  $showcarInfo.on("click", function() {
+    $("#car-details").removeClass("hide-carinfo");
+  });
+  $updateCar.on("click", handleUpdateCar);
 }); //end of document ready
