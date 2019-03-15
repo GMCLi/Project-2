@@ -6,6 +6,8 @@ $(document).ready(function() {
   // var $customerRenting = $("#customerRenting");
   var $customerNum = $("#customerNum");
   var $exampleList = $("#example-list");
+  var $searchForm = $("#searchForm");
+  var $searchinput = $("#searchinput");
 
   // var $customerNameUpdate = $("#customer-nameUpdate");
 
@@ -111,7 +113,27 @@ $(document).ready(function() {
     });
   };
 
+  var handlesearchinput = function() {
+    event.preventDefault();
+    var searchquery = {
+      customerName: $searchinput.val().trim()
+    };
+    // console.log(searchquery);
+    $.ajax({
+      method: "GET",
+      url: "/api/customer/" + searchquery.customerName
+      // data: {
+      //   name: searchquery
+      // }
+    }).then(function(response) {
+      console.log(response);
+      // res.render("/search", response[0].customerName);
+      // location.reload();
+    });
+  };
+
   // Add event listeners to the submit and delete buttons
   $submitForm.on("submit", handleFormSubmit, console.log("submit clicked")); //console log not firing
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
+  $searchForm.on("submit", handlesearchinput);
 });
