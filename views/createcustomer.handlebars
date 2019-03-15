@@ -1,35 +1,35 @@
-<form class="clearfix mb-4" id="createcustomerSubmitted">
-  {{!-- Customer Name --}}
-  <div class="form-group">
-    <label for="customer-name">Customer Name</label>
-    <input type="text" id="customer-name" class="form-control" aria-describedby="customer-name"
-      placeholder="Enter Customer Name">
-  </div>
-
-  {{!-- Customer DOB --}}
-  <div class="form-group">
-    <label for="customerDOB">Date of Birth (mm/dd/yyyy)</label>
-    <input type="date" id="customerDOB" class="form-control" aria-describedby="customerDOB"
-      placeholder="Enter Customer Date of Birth">
-  </div>
-
-  {{!-- Customer Phone Number --}}
-  <div class="form-group">
-    <label for="customerNum">Customer Phone Number</label>
-    <input type="text" id="customerNum" class="form-control" aria-describedby="customerNum"
-      placeholder="Enter Customer Number">
-  </div>
-
-  {{!-- Currently Renting --}}
-  <div class="form-group">
-    <input type="checkbox" id="customerRenting" class="checkbox" aria-describedby="customerRenting">
-    <label for="customerRenting">Currently Renting</label>
-    {{!-- Only Currently Renting, because Boolean is by default false (default === not renting) --}}
-    <div>
-      {{!-- <label for="customerRenting">Renting</label>  --}}
+  {{> nav/nav}}
+  <div class="create-customer">
+  <form class="clearfix mb-4" action="POST">
+    {{!-- Customer Name --}}
+    <div class="form-group">
+      <label for="customer-name">Customer Name</label>
+      <input type="text" id="customer-name" class="form-control" aria-describedby="customer-name" placeholder="Enter Customer Name">
     </div>
-  </div>
 
-  {{!-- Submit Button --}}
-  <button type="submit" id="submit" class="btn btn-primary float-right">Submit</button>
-</form>
+    {{!-- Customer DOB --}}
+    <div class="form-group">
+      <label for="customerDOB">Date of Birth (mm/dd/yyyy)</label>
+      <input type="date" id="customerDOB" class="form-control" aria-describedby="customerDOB" placeholder="Enter Customer Date of Birth">
+    </div>
+
+    {{!-- Customer Phone Number --}}
+    <div class="form-group">
+      <label for="customerNum">Customer Phone Number</label>
+      <input type="text" id="customerNum" class="form-control" aria-describedby="customerNum" placeholder="Enter Customer Number">
+    </div>
+
+    {{!-- Currently Renting --}}
+    <div class="form-group">
+      <input type="checkbox" id="customerRenting" class="checkbox" aria-describedby="customerRenting">
+      <label for="customerRenting">Currently Renting</label>
+      {{!-- Only Currently Renting, because Boolean is by default false (default === not renting) --}}
+      <div>
+        {{!-- <label for="customerRenting">Renting</label> --}}
+      </div>
+    </div>
+
+    {{!-- Submit Button --}}
+    <button id="submit" class="btn btn-primary float-right">Submit</button>
+  </form>
+</div>
