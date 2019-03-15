@@ -12,10 +12,12 @@ $(document).ready(function() {
   var $tankFull = $("#tank-full");
 
   //buttons
-  var $carsubmitBtn = $("#submitcar");
-  //var $submitUpdate = $("#updatecar");
-  var $carList = $("#car-list");
-  var $cardelBtn = $("#car-delete");
+  var $carsubmitBtn = $("#submitcar"); //createCar
+  var $cardelBtn = $("#car-delete"); //deleteCar
+  var $showcarInfo = $("#show-carinfo"); //show carInfo in order to edit
+  // var $submitUpdate = $("#updatecar"); //submit updateCar
+  var $carList = $("#car-list"); //identify Div to append carCard
+  var $updateCar = $("#updatecar"); //updateCar
 
   // The API object contains methods for each kind of request we'll make
   var API = {
@@ -216,4 +218,8 @@ $(document).ready(function() {
     console.log("The car you want to delete is " + carId);
     handlecarDeleteBtnClick(carId);
   });
+  $showcarInfo.on("click", function() {
+    $("#car-details").removeClass("hide-carinfo");
+  });
+  // $updateCar.on("click", handleUpdateCar);
 }); //end of document ready
