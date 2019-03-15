@@ -22,14 +22,12 @@
   
 }
 
- body {
+ body, html {
   font-family: "Times New Roman", Times, serif;
-  font-size: 20px; 
-   background-color: rgb(225, 225, 225);
+  font-size: 20px;
+  background-image: url(car2.jpg);
    height: 100%;
-   margin: auto;  
  }
-
 
 .carthumb {
   width:100px;
@@ -48,7 +46,11 @@
   .create-customer {
     margin: 5%;  
   }
- 
-  #car-card {
-    width: 18rem;
+
+
+  footer {
+    text-align: center;
+    font-size: 12px;
   }
+ 
+
