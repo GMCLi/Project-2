@@ -9,7 +9,7 @@
 
     {{!-- Customer DOB --}}
     <div class="form-group">
-      <label for="customerDOB">Date of Birth (mm/dd/yyyy)</label>
+      <label for="customerDOB">Date of Birth</label>
       <input type="date" id="customerDOB" class="form-control" aria-describedby="customerDOB" placeholder="Enter Customer Date of Birth">
     </div>
 
@@ -20,14 +20,14 @@
     </div>
 
     {{!-- Currently Renting --}}
-    <div class="form-group">
+    {{!-- <div class="form-group">
       <input type="checkbox" id="customerRenting" class="checkbox" aria-describedby="customerRenting">
-      <label for="customerRenting">Currently Renting</label>
+      <label for="customerRenting">Currently Renting</label> --}}
       {{!-- Only Currently Renting, because Boolean is by default false (default === not renting) --}}
-      <div>
+      {{!-- <div> --}}
         {{!-- <label for="customerRenting">Renting</label> --}}
-      </div>
-    </div>
+      {{!-- </div>
+    </div> --}}
 
     {{!-- Submit Button --}}
     <button id="submit" class="btn btn-primary float-right">Submit</button>

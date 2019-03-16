@@ -82,7 +82,7 @@ module.exports = function(app) {
     db.customer
       .findAll({ where: { id: req.params.id } })
       .then(function(customerData) {
-        console.log(customerData[0].dataValues);
+        // console.log(customerData[0].dataValues);
         res.render("customerupdate", {
           customerID: customerData[0].dataValues.id,
           customerName: customerData[0].dataValues.customerName,
