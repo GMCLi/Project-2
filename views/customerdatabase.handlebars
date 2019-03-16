@@ -10,7 +10,7 @@
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="customer/{{this.dataValues.id}}">{{this.dataValues.customerName}}</a>
             <button class="btn btn-warning float-right update"
-              onclick="location.href = 'http://localhost:3000/customer/{{this.dataValues.id}}/customerupdate';">Update</button>
+              onclick="location.href = '/customer/{{this.dataValues.id}}/customerupdate';">Update</button>
             <button class="btn btn-danger float-right delete"><i class="icon-remove"></i>Delete</button>
           </li>
           {{/each}}
