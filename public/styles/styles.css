@@ -31,16 +31,17 @@
    background-size: cover; */
  }
 
-.carthumb {
-  width:100px;
-  height:100px;
+.car-thumb {
+  width:100%;
+  height:200px;
 
 }
 
 .car-card {
   float:left;
   margin-bottom: 10px;
-}
+  width: 18rem;
+ }
 
 .dropdown:hover .dropdown-menu {
   display: block;
@@ -60,8 +61,4 @@
 
 .hide-carinfo {
   visibility: hidden;
-}
-
-.car-card {
-  width: 18rem;
 }

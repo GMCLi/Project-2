@@ -7,8 +7,8 @@
         <h3>Available Vehicles:</h3>
         <div class="car-list">
         {{#each cars}}
-        <div class="card text-left car-card" id="car-card" data-id = {{this.id}}>
-          <img src={{this.image}} class="card-img-top" alt="Car image">
+        <div class="card text-left car-card" data-id = {{this.id}}>
+          <img src={{this.image}} class="card-img-top car-thumb" alt="Car image">
           <div class="card-body">
             <a href="car/{{this.id}}">
               <h5 class="card-title">{{this.id}}.{{this.platenumber}}</h5>

@@ -84,6 +84,32 @@ module.exports = function(app) {
       });
   });
 
+  // PUT route for updating car info by id - Paskwa
+  app.put("/api/cars/:id", function(req, res) {
+    console.log(req.body);
+    db.Car.update(
+      {
+        platenumber: req.body.platenumber,
+        make: req.body.make,
+        model: req.body.model,
+        color: req.body.color,
+        year: req.body.year,
+        image: req.body.image,
+        isclean: req.body.isclean,
+        isavailable: req.body.isavailable,
+        fix: req.body.fix,
+        tankfull: req.body.tankfull
+      },
+      {
+        where: {
+          id: req.params.id //confirmed operational
+        }
+      }
+    ).then(function(carData) {
+      res.json(carData);
+    });
+  });
+
   // Delete a car by id - Paskwa's changes
   app.delete("/api/cars/:id", function(req, res) {
     db.Car.destroy({ where: { id: req.params.id } }).then(function(dbCar) {
