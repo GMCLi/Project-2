@@ -9,19 +9,19 @@ module.exports = function(app) {
   });
 
   // Search bar get all things with the search term
-  app.get("/api/customer/:Name", function(req, res) {
-    console.log(req.params);
-    db.customer
-      .findAll({
-        where: {
-          customerName: req.params.Name
-        }
-      })
-      .then(function(customerData) {
-        console.log("customerData comes as...CustomerData???" + customerData);
-        res.json(customerData);
-      });
-  });
+  // app.get("/api/customer/:Name", function(req, res) {
+  //   console.log(req.params);
+  //   db.customer
+  //     .findAll({
+  //       where: {
+  //         customerName: req.params.Name
+  //       }
+  //     })
+  //     .then(function(customerData) {
+  //       console.log("customerData comes as...CustomerData???" + customerData);
+  //       res.json(customerData);
+  //     });
+  // });
 
   // Get all cars - Paskwa's changes
   app.get("/api/cars", function(req, res) {

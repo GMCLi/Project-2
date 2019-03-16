@@ -113,10 +113,11 @@ $(document).ready(function() {
     });
   };
 
+  //HOW TO LINK THIS TO HTMLROUTES 24
   var handlesearchinput = function() {
     event.preventDefault();
     var searchquery = {
-      customerName: $searchinput.val().trim()
+      customerName: $searchinput.val()
     };
     // console.log(searchquery);
     $.ajax({
