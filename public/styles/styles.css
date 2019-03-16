@@ -47,6 +47,7 @@
     margin: 5%;  
   }
   footer {
+    position: fixed;
     text-align: center;
     font-size: 12px;
   }
