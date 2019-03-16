@@ -50,11 +50,13 @@
   }
 
 
-  footer {
-    position: relative;
+  .footer {
+    left: 0;
+    bottom: 0;
     text-align: center;
+    position: fixed;
+    width: 100%;
     font-size: 12px;
-    margin-top: 400px;
   }
  
 /* Paskwa car updates */
