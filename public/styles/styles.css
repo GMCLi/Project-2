@@ -27,8 +27,6 @@
   font-size: 20px;
   background-image: url(car2.jpg);
    height: 100%;
-   /* background-image: url("./logo.jpg");
-   background-size: cover; */
  }
 
 .car-thumb {
@@ -53,9 +51,10 @@
 
 
   footer {
-    position: fixed;
+    position: relative;
     text-align: center;
     font-size: 12px;
+    margin-top: 400px;
   }
  
 /* Paskwa car updates */
@@ -63,3 +62,9 @@
 .hide-carinfo {
   visibility: hidden;
 }
+.form-group {
+  width: 100%;
+ 
+}
+
+
