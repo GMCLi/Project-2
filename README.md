@@ -1,6 +1,6 @@
 # Classic Vehicle Rental Management Syste!
 
-A Fmanagement system for high end car rental company built with Sequelize/Node.js/Express/MySQL/Handlebars/Bootstrap4/Firebase. This app is currently targeted at employees of a Classic Car rental company. It is essentially split into two sides. Customer management and vehicle management.
+A management system for high end car rental company built with Sequelize/Node.js/Express/MySQL/Handlebars/Bootstrap4/Firebase. This app is currently targeted at employees of a Classic Car rental company. It is essentially split into two sides. Customer management and vehicle management.
 
 ## Description
 This application demonstrates a simple full stack application with a front end implemented with HTML/CSS and elements from the Bootsrap4 framework and the backend implemented with Node.js and Express. HTML templating is done with the help of Handlebars. We used Sequelize Object Relational Mapping to map the relational data from the database to the objects in the back end.
