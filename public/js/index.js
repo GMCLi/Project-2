@@ -119,15 +119,13 @@ $(document).ready(function() {
     var searchquery = {
       customerName: $searchinput.val()
     };
-    // console.log(searchquery);
+    console.log(searchquery);
     $.ajax({
       method: "GET",
       url: "/api/customer/" + searchquery.customerName
-      // data: {
-      //   name: searchquery
-      // }
     }).then(function(response) {
       console.log(response);
+      window.location.href = "/customer/" + response[0].id;
       // res.render("/search", response[0].customerName);
       // location.reload();
     });
