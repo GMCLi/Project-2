@@ -19,15 +19,24 @@ module.exports = function(app) {
     });
   });
 
+  //HOW TO LINK INDEX.JS HANDLESEARCHINPUT
   //load page for search results from searchbar
-  // app.get("/search", function(req, res) {
-  //   db.customer.findAll({}).then(function(customerData) {
-  //     res.render("search", {
-  //       msg: "Searched Customer",
-  //       customer: customerData
-  //     });
-  //   });
-  // });
+  app.get("/api/customer", function(req, res) {
+    console.log(req);
+    db.customer
+      .findAll({
+        // where: {
+        //   customerName: $searchinput
+        // }
+      })
+      .then(function(customerData) {
+        console.log(customerData);
+        res.render("customer", {
+          msg: "Searched Customer",
+          customer: customerData
+        });
+      });
+  });
 
   //Load the home page with Authentication - Sasan
   app.get("/homepage", function(req, res) {
