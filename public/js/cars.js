@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   //buttons - create /delete
   var $carsubmitBtn = $("#submitcar"); //createCar
-  var $cardelBtn = $("#car-delete"); //deleteCar
+  var $cardelBtn = $(".car-delete"); //deleteCar
   var $carList = $("#car-list"); //identify Div to append carCard
 
   //buttons - update
