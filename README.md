@@ -1,4 +1,4 @@
-# Classic Vehicle Rental Management Syste!
+# Classic Vehicle Rental Management System!
 
 A management system for high end car rental company built with Sequelize/Node.js/Express/MySQL/Handlebars/Bootstrap4/Firebase. This app is currently targeted at employees of a Classic Car rental company. It is essentially split into two sides. Customer management and vehicle management.
 
